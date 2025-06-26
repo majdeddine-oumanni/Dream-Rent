@@ -42,5 +42,7 @@ public class UserService {
         return mapper.toDTOs(repository.findAll());
     }
 
-
+    public void delete(Long id){
+        repository.deleteById(id);
+    }
 }
