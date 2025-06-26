@@ -5,6 +5,8 @@ import com.rent.backend.Model.User;
 import com.rent.backend.Service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -22,5 +24,10 @@ public class UserController {
     @PutMapping("/update/{id}")
     public UserDTO updateUser(@PathVariable Long id, @RequestBody UserDTO dto){
         return service.update(id, dto);
+    }
+
+    @GetMapping("/get")
+    public List<UserDTO> getAllUsers(){
+        return service.getAllUsers();
     }
 }
