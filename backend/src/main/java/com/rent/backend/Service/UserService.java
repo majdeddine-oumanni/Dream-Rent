@@ -6,6 +6,8 @@ import com.rent.backend.Model.User;
 import com.rent.backend.Repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     private final UserRepository repository;
@@ -25,7 +27,7 @@ public class UserService {
     public UserDTO update(Long id, UserDTO dto){
         User user = repository.findById(id)
                 .orElseThrow(()-> new RuntimeException("user not found"));
-        
+
         user.setBanned(dto.isBanned());
         user.setFirstName(dto.getFirstName());
         user.setEmail(dto.getEmail());
@@ -34,6 +36,10 @@ public class UserService {
 
         User savedUser = repository.save(user);
         return mapper.toDTO(savedUser);
+    }
+
+    public List<UserDTO> getAllUsers(){
+        return mapper.toDTOs(repository.findAll());
     }
 
 
