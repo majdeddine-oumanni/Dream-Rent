@@ -22,5 +22,19 @@ public class UserService {
         return mapper.toDTO(savedUser);
     }
 
-    
+    public UserDTO update(Long id, UserDTO dto){
+        User user = repository.findById(id)
+                .orElseThrow(()-> new RuntimeException("user not found"));
+        
+        user.setBanned(dto.isBanned());
+        user.setFirstName(dto.getFirstName());
+        user.setEmail(dto.getEmail());
+        user.setLastName(dto.getLastName());
+        user.setPassword(dto.getPassword());
+
+        User savedUser = repository.save(user);
+        return mapper.toDTO(savedUser);
+    }
+
+
 }
