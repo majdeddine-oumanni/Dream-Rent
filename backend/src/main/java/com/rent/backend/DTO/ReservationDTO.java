@@ -1,38 +1,17 @@
-package com.rent.backend.Model;
+package com.rent.backend.DTO;
 
-import jakarta.persistence.*;
+import com.rent.backend.Model.ReservationStatus;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reservation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class ReservationDTO {
     private LocalDate startDate;
     private LocalDate endDate;
-
-    @Enumerated(EnumType.STRING)
     private ReservationStatus reservationStatus;
-
-    @ManyToOne
-    private Tenant tenant;
-
-    @ManyToOne
-    private Property property;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public LocalDate getStartDate() {
         return startDate;
@@ -56,21 +35,5 @@ public class Reservation {
 
     public void setReservationStatus(ReservationStatus reservationStatus) {
         this.reservationStatus = reservationStatus;
-    }
-
-    public Tenant getTenant() {
-        return tenant;
-    }
-
-    public void setTenant(Tenant tenant) {
-        this.tenant = tenant;
-    }
-
-    public Property getProperty() {
-        return property;
-    }
-
-    public void setProperty(Property property) {
-        this.property = property;
     }
 }

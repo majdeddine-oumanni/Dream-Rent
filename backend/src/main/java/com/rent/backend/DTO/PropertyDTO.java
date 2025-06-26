@@ -1,46 +1,24 @@
-package com.rent.backend.Model;
+package com.rent.backend.DTO;
 
-import jakarta.persistence.*;
+import com.rent.backend.Model.PropertyType;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Property {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+public class PropertyDTO {
     private String title;
     private String description;
     private String location;
     private int roomsNumber;
     private boolean availability;
     private double price;
-
-    @ElementCollection
     private List<String> images = new ArrayList<>();
-    @Enumerated(EnumType.STRING)
     private PropertyType type;
-
-    @ManyToOne
-    private Owner owner;
-
-    @OneToMany(mappedBy = "property")
-    private List<Reservation> reservations;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -104,21 +82,5 @@ public class Property {
 
     public void setType(PropertyType type) {
         this.type = type;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
-
-    public List<Reservation> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
     }
 }
