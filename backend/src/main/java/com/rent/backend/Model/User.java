@@ -17,6 +17,7 @@ public class User {
     private String password;
     private String email;
     private boolean isBanned;
+    private String country;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -75,5 +76,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }
