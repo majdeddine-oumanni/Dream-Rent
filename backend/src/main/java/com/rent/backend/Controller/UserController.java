@@ -17,11 +17,6 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping("/post")
-    public UserDTO addUser(@RequestBody UserDTO dto){
-        return service.create(dto);
-    }
-
     @PutMapping("/update/{id}")
     public UserDTO updateUser(@PathVariable Long id, @RequestBody UserDTO dto){
         return service.update(id, dto);
@@ -35,5 +30,10 @@ public class UserController {
     @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable Long id){
         service.delete(id);
+    }
+
+    @PatchMapping("/isBanned/{id}")
+    public UserDTO isBanned(@PathVariable Long id, @RequestParam boolean isBanned){
+        return service.updateBanning(id, isBanned);
     }
 }

@@ -30,7 +30,6 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**").permitAll()
-                .requestMatchers("/**").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
