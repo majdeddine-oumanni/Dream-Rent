@@ -1,7 +1,6 @@
 package com.rent.backend.Controller;
 
 import com.rent.backend.DTO.UserDTO;
-import com.rent.backend.Model.User;
 import com.rent.backend.Service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,5 +34,10 @@ public class UserController {
     @PatchMapping("/isBanned/{id}")
     public UserDTO isBanned(@PathVariable Long id, @RequestParam boolean isBanned){
         return service.updateBanning(id, isBanned);
+    }
+
+    @GetMapping("/get/by/{id}")
+    public UserDTO getUserById(@PathVariable Long id){
+        return service.getUserById(id);
     }
 }

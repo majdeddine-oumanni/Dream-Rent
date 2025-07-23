@@ -48,4 +48,9 @@ public class UserService {
         user.setBanned(isBanned);
         return mapper.toDTO(user);
     }
+    public UserDTO getUserById(Long id){
+        User user = repository.findById(id).
+                orElseThrow(()-> new RuntimeException("user not found"));
+        return mapper.toDTO(user);
+    }
 }
