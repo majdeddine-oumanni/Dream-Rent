@@ -31,12 +31,12 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**").permitAll()
                 .requestMatchers("/user/**").hasAnyRole("ADMIN")
+                .requestMatchers("/property/**").hasAnyRole("ADMIN", "USER", "TENANT")
                 .anyRequest()
                 .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
                 .and()
                 .cors(Customizer.withDefaults())
                 .authenticationProvider(authenticationProvider)

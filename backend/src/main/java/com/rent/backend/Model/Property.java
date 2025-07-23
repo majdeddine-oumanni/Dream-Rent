@@ -24,6 +24,7 @@ public class Property {
 
     @ElementCollection
     private List<String> images = new ArrayList<>();
+
     @Enumerated(EnumType.STRING)
     private PropertyType type;
 
