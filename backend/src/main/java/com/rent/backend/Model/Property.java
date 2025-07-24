@@ -17,7 +17,8 @@ public class Property {
 
     private String title;
     private String description;
-    private String location;
+    private String country;
+    private String city;
     private int roomsNumber;
     private boolean availability;
     private double price;
@@ -26,7 +27,7 @@ public class Property {
     private List<String> images = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
-    private PropertyType type;
+    private PropertyType propertyType;
 
     @ManyToOne
     private Owner owner;
@@ -59,12 +60,20 @@ public class Property {
         this.description = description;
     }
 
-    public String getLocation() {
-        return location;
+    public String getCountry() {
+        return country;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public int getRoomsNumber() {
@@ -99,12 +108,12 @@ public class Property {
         this.images = images;
     }
 
-    public PropertyType getType() {
-        return type;
+    public PropertyType getPropertyType() {
+        return propertyType;
     }
 
-    public void setType(PropertyType type) {
-        this.type = type;
+    public void setPropertyType(PropertyType propertyType) {
+        this.propertyType = propertyType;
     }
 
     public Owner getOwner() {

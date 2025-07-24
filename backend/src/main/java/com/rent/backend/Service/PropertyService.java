@@ -4,6 +4,7 @@ import com.rent.backend.DTO.PropertyDTO;
 import com.rent.backend.Mappers.PropertyMapper;
 import com.rent.backend.Model.Owner;
 import com.rent.backend.Model.Property;
+import com.rent.backend.Model.PropertyType;
 import com.rent.backend.Repositories.PropertyRepository;
 import com.rent.backend.Repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,9 +37,10 @@ public class PropertyService {
                 .orElseThrow(()-> new RuntimeException("Property not found"));
 
         property.setAvailability(dto.isAvailability());
-        property.setLocation(dto.getLocation());
+        property.setCountry(dto.getCountry());
+        property.setCity(dto.getCity());
         property.setDescription(dto.getDescription());
-        property.setType(dto.getType());
+        property.setPropertyType(dto.getType());
         property.setRoomsNumber(dto.getRoomsNumber());
 
         Property savedProperty = repository.save(property);
@@ -63,6 +65,21 @@ public class PropertyService {
 
     public List<PropertyDTO> getPropertiesByOwnerId(Long id){
         List<Property> properties = repository.findAllByOwnerId(id);
+        return mapper.toDTOs(properties);
+    }
+
+    public List<PropertyDTO> getPropertiesByCityName(String cityName){
+        List<Property> properties = repository.findAllByCity(cityName);
+        return mapper.toDTOs(properties);
+    }
+
+    public List<PropertyDTO> getPropertiesByCountryName(String country){
+        List<Property> properties = repository.findAllByCountry(country);
+        return mapper.toDTOs(properties);
+    }
+
+    public List<PropertyDTO> findPropertiesByPropertyType(PropertyType propertyType){
+        List<Property> properties = repository.findAllByPropertyType(propertyType);
         return mapper.toDTOs(properties);
     }
 

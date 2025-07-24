@@ -11,9 +11,11 @@ import java.util.List;
 @NoArgsConstructor
 
 public class PropertyDTO {
+
     private String title;
     private String description;
-    private String location;
+    private String country;
+    private String city;
     private int roomsNumber;
     private boolean availability;
     private double price;
@@ -36,12 +38,20 @@ public class PropertyDTO {
         this.description = description;
     }
 
-    public String getLocation() {
-        return location;
+    public String getCountry() {
+        return country;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public int getRoomsNumber() {
