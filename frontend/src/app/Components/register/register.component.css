@@ -1,23 +1,139 @@
-body{
-  color: #000;
-  overflow-x: hidden;
-  height: 100%;
-  background-image: url("https://i.imgur.com/GMmCQHC.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%}.card{padding: 30px 40px;margin-top: 60px;
-  margin-bottom: 60px;border: none !important;
-  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2)}.blue-text{color: #00BCD4}.form-control-label{margin-bottom: 0}input, textarea, button{padding: 8px 15px;border-radius: 5px !important;
-  margin: 5px 0px;box-sizing: border-box;
-  border: 1px solid #ccc;font-size: 18px !important;
-  font-weight: 300}input:focus, textarea:focus{-moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  border: 1px solid #00BCD4;
-  outline-width: 0;
-  font-weight: 400}.btn-block{text-transform: uppercase;font-size: 15px !important;
-  font-weight: 400;height: 43px;
-  cursor: pointer}.btn-block:hover{color: #fff !important}button:focus{-moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  outline-width: 0
+:root {
+    --airbnb-red: #FF385C;
+    --airbnb-dark: #484848;
+    --airbnb-gray: #717171;
+    --airbnb-light-gray: #F7F7F7;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.registration-container {
+    max-width: 720px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.registration-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    border: none;
+}
+
+.card-header {
+    background: white;
+    border-bottom: 1px solid #e9ecef;
+    padding: 2rem 2rem 1rem;
+    text-align: center;
+}
+
+.card-header h2 {
+    color: var(--airbnb-dark);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.card-header p {
+    color: var(--airbnb-gray);
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+.card-body {
+    padding: 1.5rem 2rem 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    color: var(--airbnb-dark);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.form-control, .form-select {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    background-color: white;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--airbnb-red);
+    box-shadow: 0 0 0 0.2rem rgba(255, 56, 92, 0.1);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #aaa;
+}
+
+.btn-register {
+    background: linear-gradient(135deg, #e31c5f 0%, #d81b60 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-transform: none;
+}
+
+.btn-register:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 56, 92, 0.3);
+    color: white;
+}
+
+.users-list-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    color: var(--airbnb-dark);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.users-list-btn:hover {
+    background: white;
+    color: var(--airbnb-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.required {
+    color: var(--airbnb-red);
+}
+
+@media (max-width: 576px) {
+    .registration-container {
+        margin: 1rem auto;
+    }
+
+    .card-header {
+        padding: 1.5rem 1.5rem 1rem;
+    }
+
+    .card-body {
+        padding: 1rem 1.5rem 1.5rem;
+    }
 }
