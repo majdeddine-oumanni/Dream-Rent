@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from '../../Service/users.service';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../Service/auth.service';
@@ -11,7 +10,7 @@ interface User {
   email: string,
   password: string,
   country: string,
-  role: 'OWNER' | 'TENANT'
+  role: 'ADMIN' | 'OWNER' | 'TENANT'
 };
 @Component({
   selector: 'app-register',
@@ -57,9 +56,10 @@ export class RegisterComponent implements OnInit{
 
       // Mark all fields as touched to show any remaining validation errors
       this.markFormGroupTouched();
+      const payload = this.registrationForm.value as User;
 
       try {
-        this.service.register(this.registrationForm.value).subscribe((response)=>{
+        this.service.register(payload).subscribe((response)=>{
           console.log(response.firstName + " was added");
         })
         console.log('Form submitted:', this.registrationForm.value);
