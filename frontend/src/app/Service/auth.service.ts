@@ -29,6 +29,7 @@ export class AuthService {
     return this.http.post<Payload>(`${this.baseUrl}/register`, user);
   }
 
+
   // public login(user: LoginData):Observable<LoginData>{
   //   return this.http.post<LoginData>(`${this.baseUrl}/authenticate`, user)
   // }
@@ -38,8 +39,6 @@ export class AuthService {
       tap((response: any) => {
         if (response.token) {
           this.setAuthData(response.token);
-
-          // this.userUpdated$.next();
         }
       })
     );

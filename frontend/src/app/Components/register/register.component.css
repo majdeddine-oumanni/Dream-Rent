@@ -1,5 +1,5 @@
 :root {
-    --airbnb-red: #FF385C;
+    --airbnb-red: #008080;
     --airbnb-dark: #484848;
     --airbnb-gray: #717171;
     --airbnb-light-gray: #F7F7F7;
@@ -9,6 +9,10 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a{
+  color: inherit;
 }
 
 
@@ -72,7 +76,7 @@ body {
 
 .form-control:focus, .form-select:focus {
     border-color: var(--airbnb-red);
-    box-shadow: 0 0 0 0.2rem rgba(255, 56, 92, 0.1);
+    box-shadow: 0 0 0 0.2rem rgba(56, 238, 255, 0.1);
     outline: none;
 }
 
@@ -81,7 +85,7 @@ body {
 }
 
 .btn-register {
-    background: linear-gradient(135deg, #e31c5f 0%, #d81b60 100%);
+    background: linear-gradient(135deg, #00c5c5 0%, #00aeae 100%);
     border: none;
     border-radius: 8px;
     color: white;
@@ -95,7 +99,7 @@ body {
 
 .btn-register:hover{
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(255, 56, 92, 0.3);
+    box-shadow: 0 4px 12px rgba(56, 222, 255, 0.3);
     color: white;
 }
 
@@ -140,9 +144,9 @@ body {
 }
 .btn-login-redirect {
     background: transparent;
-    border: 2px solid var(--airbnb-red);
+    border: 2px solid #008080;
     border-radius: 8px;
-    color: var(--airbnb-red);
+    color: #008080;
     font-weight: 600;
     padding: 0.875rem 2rem;
     font-size: 1rem;
@@ -152,10 +156,10 @@ body {
 }
 
 .btn-login-redirect:hover {
-    background-color: #FF385C;
+    background-color: #008080;
     color: white;
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(255, 56, 92, 0.3);
+    box-shadow: 0 4px 12px rgba(56, 248, 255, 0.3);
 }
 #quest{
   color: var(--airbnb-gray);

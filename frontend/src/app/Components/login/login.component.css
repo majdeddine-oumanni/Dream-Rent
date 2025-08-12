@@ -33,7 +33,7 @@ body {
 }
 
 .card-header h2 {
-    color: var(--airbnb-dark);
+    color: #484848;
     font-weight: 600;
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
@@ -54,7 +54,7 @@ body {
 }
 
 .form-label {
-    color: var(--airbnb-dark);
+    color: #484848;
     font-weight: 500;
     margin-bottom: 0.5rem;
     font-size: 0.9rem;
@@ -70,8 +70,8 @@ body {
 }
 
 .form-control:focus {
-    border-color: var(--airbnb-red);
-    box-shadow: 0 0 0 0.2rem rgba(255, 56, 92, 0.1);
+    border-color: #02a1a1;
+    box-shadow: 0 0 0 0.2rem rgba(56, 225, 255, 0.1);
     outline: none;
 }
 
@@ -137,7 +137,7 @@ a{
     background: transparent;
     border: 2px solid  #008080;
     border-radius: 8px;
-    color: var(--airbnb-red);
+    color: #008080;
     font-weight: 600;
     padding: 0.875rem 2rem;
     font-size: 1rem;
@@ -177,7 +177,7 @@ a{
     border: none;
     border-radius: 25px;
     padding: 0.5rem 1.5rem;
-    color: var(--airbnb-dark);
+    color: #484848;
     font-weight: 500;
     text-decoration: none;
     transition: all 0.3s ease;
