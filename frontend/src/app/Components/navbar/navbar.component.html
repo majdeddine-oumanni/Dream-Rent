@@ -1,5 +1,123 @@
-<nav class="navbar ">
-  <div class="container-fluid false-container">
-    <span class="navbar-brand mb-0 h1">Navbar</span>
-  </div>
+<!-- Top Banner -->
+<nav class="first-navbar">
+    <div class="container-fluid top-sent">
+        <h3 class="sent">
+            Book stunning homes worldwide—your perfect vacation rental is just a few clicks away!
+        </h3>
+    </div>
+</nav>
+
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-lg main-navbar">
+    <div class="container-fluid">
+        <!-- Brand Logo -->
+        <a class="navbar-brand brand-logo" href="#">
+            <i class="fas fa-home me-2"></i>StayFinder
+        </a>
+
+        <!-- Mobile Toggle Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible Content -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <!-- Search Container -->
+            <div class="d-flex justify-content-center flex-grow-1 mx-lg-4">
+                <div class="search-container d-flex">
+                    <!-- Country/Location -->
+                    <div class="search-section">
+                        <label class="search-label">Where</label>
+                        <input type="text" class="search-input" placeholder="Search destinations" id="locationInput">
+                    </div>
+
+                    <!-- Check-in Date -->
+                    <div class="search-section">
+                        <label class="search-label">Check in</label>
+                        <input type="date" class="search-input" id="checkinInput">
+                    </div>
+
+                    <!-- Check-out Date -->
+                    <div class="search-section">
+                        <label class="search-label">Check out</label>
+                        <input type="date" class="search-input" id="checkoutInput">
+                    </div>
+
+                    <!-- Guests -->
+                    <div class="search-section guest-dropdown">
+                        <label class="search-label">Who</label>
+                        <input type="text" class="search-input" placeholder="Add guests" id="guestInput" readonly style="cursor: pointer;">
+
+                        <!-- Guest Dropdown -->
+                        <div class="dropdown-content" id="guestDropdown">
+                            <div class="guest-counter">
+                                <div class="guest-info">
+                                    <h6>Adults</h6>
+                                    <p>Ages 13 or above</p>
+                                </div>
+                                <div class="counter-controls">
+                                    <button type="button" class="counter-btn" id="adultsDecrement">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="counter-value" id="adultsCount">0</span>
+                                    <button type="button" class="counter-btn" id="adultsIncrement">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="guest-counter">
+                                <div class="guest-info">
+                                    <h6>Children</h6>
+                                    <p>Ages 2-12</p>
+                                </div>
+                                <div class="counter-controls">
+                                    <button type="button" class="counter-btn" id="childrenDecrement">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="counter-value" id="childrenCount">0</span>
+                                    <button type="button" class="counter-btn" id="childrenIncrement">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="guest-counter">
+                                <div class="guest-info">
+                                    <h6>Infants</h6>
+                                    <p>Under 2</p>
+                                </div>
+                                <div class="counter-controls">
+                                    <button type="button" class="counter-btn" id="infantsDecrement">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="counter-value" id="infantsCount">0</span>
+                                    <button type="button" class="counter-btn" id="infantsIncrement">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Button -->
+                    <div class="search-section search-btn-section d-flex align-items-center justify-content-center">
+                        <button type="button" class="search-btn" id="searchBtn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Auth Buttons -->
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-auth btn-login">
+                    <i class="fas fa-sign-in-alt me-1"></i>Login
+                </a>
+                <a href="#" class="btn btn-auth btn-register">
+                    <i class="fas fa-user-plus me-1"></i>Register
+                </a>
+            </div>
+        </div>
+    </div>
 </nav>
