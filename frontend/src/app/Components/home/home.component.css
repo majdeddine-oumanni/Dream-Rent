@@ -1,0 +1,353 @@
+.container-fluid {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.properties-container {
+    padding: 2rem 0;
+}
+.row{
+  width: 100%;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    color: #008080;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: #6c757d;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.property-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 128, 128, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: none;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.property-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 128, 128, 0.15);
+}
+
+.property-image {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.property-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.property-card:hover .property-image img {
+    transform: scale(1.05);
+}
+
+.property-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #27ae60;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    z-index: 2;
+}
+
+.property-badge.featured {
+    background: #f39c12;
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.wishlist-btn:hover {
+    background: white;
+    color: #008080;
+    transform: scale(1.1);
+}
+
+.wishlist-btn.active {
+    color: #e74c3c;
+}
+
+.image-gallery-indicator {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    z-index: 2;
+}
+
+.property-content {
+    padding: 1.5rem;
+}
+
+.property-location {
+    color: #95a5a6;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.property-location i {
+    margin-right: 0.5rem;
+    color: #3CEAFA;
+}
+
+.property-title {
+    color: #2c3e50;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.property-type {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.property-features {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.feature-item i {
+    margin-right: 0.3rem;
+    color: #00d2d2;
+    width: 14px;
+}
+
+.property-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.rating-stars {
+    color: #f39c12;
+    margin-right: 0.5rem;
+}
+
+.rating-score {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-right: 0.5rem;
+}
+
+.rating-reviews {
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+.property-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f1f1;
+    padding-top: 1rem;
+}
+
+.property-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-amount {
+    color: #008080;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.price-period {
+    color: #95a5a6;
+    font-size: 0.8rem;
+}
+
+.availability-badge {
+    background: #E0F7FA;
+    color: #006666;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.availability-badge.limited {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.btn-view-details {
+    background: linear-gradient(135deg, #008080 0%, #00d2d2 100%);
+    border: none;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-view-details:hover {
+    background: linear-gradient(135deg, #006666 0%, #008080 100%);
+    transform: translateY(-2px);
+    color: white;
+}
+
+/* Filters Section */
+.filters-section {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 128, 128, 0.05);
+}
+
+.filter-title {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.filter-options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-btn {
+    background: #E0F7FA;
+    border: 2px solid transparent;
+    color: #008080;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: #008080;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .property-features {
+        gap: 0.5rem;
+    }
+
+    .feature-item {
+        font-size: 0.8rem;
+    }
+
+    .property-footer {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .btn-view-details {
+        width: 100%;
+    }
+
+    .filter-options {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .properties-container {
+        padding: 1rem 0;
+    }
+
+    .property-content {
+        padding: 1rem;
+    }
+
+    .property-image {
+        height: 200px;
+    }
+}
+
+/* Loading Animation */
+.loading-card {
+    background: #f8f9fa;
+    border-radius: 16px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
