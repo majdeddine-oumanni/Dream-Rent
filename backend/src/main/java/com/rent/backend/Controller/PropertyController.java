@@ -24,7 +24,7 @@ public class PropertyController {
         return service.create(dto);
     }
 
-    @PreAuthorize("hasRole('OWNER')")
+    @PreAuthorize("hasAnyRole('OWNER', 'ADMIN')")
     @PutMapping("/{id}")
     public PropertyDTO updateProperty(@PathVariable Long id, @RequestBody PropertyDTO dto) {
         return service.update(id, dto);
@@ -47,12 +47,12 @@ public class PropertyController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN', 'OWNER')")
-    @GetMapping("/owner/{ownerId}")  // Better path variable naming
+    @GetMapping("/owner/{ownerId}")
     public List<PropertyDTO> getPropertiesByOwner(@PathVariable("ownerId") Long ownerId) {
         return service.getPropertiesByOwnerId(ownerId);
     }
 
-    @GetMapping("/search/city")  // Better for search queries
+    @GetMapping("/search/city")
     public List<PropertyDTO> searchPropertiesByCity(@RequestParam String city) {
         return service.getPropertiesByCityName(city);
     }
