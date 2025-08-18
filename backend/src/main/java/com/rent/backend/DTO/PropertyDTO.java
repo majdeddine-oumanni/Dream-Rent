@@ -17,6 +17,8 @@ public class PropertyDTO {
     private String country;
     private String city;
     private int roomsNumber;
+    private double area;
+    private int bathroomsNumber;
     private boolean availability;
     private double price;
     private List<String> images = new ArrayList<>();
@@ -52,6 +54,22 @@ public class PropertyDTO {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        this.area = area;
+    }
+
+    public int getBathroomsNumber() {
+        return bathroomsNumber;
+    }
+
+    public void setBathroomsNumber(int bathroomsNumber) {
+        this.bathroomsNumber = bathroomsNumber;
     }
 
     public int getRoomsNumber() {

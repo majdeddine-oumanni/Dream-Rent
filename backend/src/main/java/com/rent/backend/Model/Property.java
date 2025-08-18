@@ -20,6 +20,8 @@ public class Property {
     private String country;
     private String city;
     private int roomsNumber;
+    private double Area;
+    private int bathroomsNumber;
     private boolean availability;
     private double price;
 
@@ -50,6 +52,22 @@ public class Property {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public double getArea() {
+        return Area;
+    }
+
+    public void setArea(double area) {
+        Area = area;
+    }
+
+    public int getBathroomsNumber() {
+        return bathroomsNumber;
+    }
+
+    public void setBathroomsNumber(int bathroomsNumber) {
+        this.bathroomsNumber = bathroomsNumber;
     }
 
     public String getDescription() {
