@@ -18,14 +18,13 @@ export class LoginComponent {
   loginForm !: FormGroup;
   constructor(private fb : FormBuilder, private service: AuthService){
     this.loginForm = fb.group({
-      email : ['', [Validators.required, Validators.email]],
-      password : ['', [Validators.required, Validators.minLength(8)]]
+      email : [''],
+      password : ['']
     })
   }
   onSubmit(){
     const data = this.loginForm.value as requiredData;
     if (this.loginForm.valid) {
-    //console.log('Form Submitted', this.loginForm.value);
     this.service.login(data).subscribe((response)=>{
       console.log(response);
     })

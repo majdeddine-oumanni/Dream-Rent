@@ -8,4 +8,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  available : boolean = true;
 }
