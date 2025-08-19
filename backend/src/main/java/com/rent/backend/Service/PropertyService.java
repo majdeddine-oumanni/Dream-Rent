@@ -36,6 +36,13 @@ public class PropertyService {
     public PropertyDTO update(Long id, PropertyDTO dto){
         Property property = repository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Property not found"));
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        Owner owner = (Owner) userRepository.findByEmail(email);
+
+        if (!property.getOwner().getId().equals(owner.getId())) {
+            throw new RuntimeException("You are not allowed to update this property");
+        }
 
         property.setAvailability(dto.isAvailability());
         property.setCountry(dto.getCountry());
