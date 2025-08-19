@@ -286,6 +286,11 @@
 .load-btn{
   border-color: #008080;
   color: #008080;
+  transition: 0.3s;
+}
+.load-btn:hover{
+  background-color: #008080;
+  color: white;
 }
 
 /* Responsive Design */
