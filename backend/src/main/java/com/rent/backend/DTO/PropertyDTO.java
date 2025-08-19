@@ -9,9 +9,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class PropertyDTO {
-
     private String title;
     private String description;
     private String country;
@@ -22,7 +20,8 @@ public class PropertyDTO {
     private boolean availability;
     private double price;
     private List<String> images = new ArrayList<>();
-    private PropertyType type;
+    private PropertyType propertyType;
+
 
     public String getTitle() {
         return title;
@@ -104,11 +103,11 @@ public class PropertyDTO {
         this.images = images;
     }
 
-    public PropertyType getType() {
-        return type;
+    public PropertyType getPropertyType() {
+        return propertyType;
     }
 
-    public void setType(PropertyType type) {
-        this.type = type;
+    public void setPropertyType(PropertyType propertyType) {
+        this.propertyType = propertyType;
     }
 }

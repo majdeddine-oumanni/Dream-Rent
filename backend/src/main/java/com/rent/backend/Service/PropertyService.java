@@ -40,7 +40,7 @@ public class PropertyService {
         property.setCountry(dto.getCountry());
         property.setCity(dto.getCity());
         property.setDescription(dto.getDescription());
-        property.setPropertyType(dto.getType());
+        property.setPropertyType(dto.getPropertyType());
         property.setRoomsNumber(dto.getRoomsNumber());
         property.setArea(dto.getArea());
         property.setBathroomsNumber(dto.getBathroomsNumber());

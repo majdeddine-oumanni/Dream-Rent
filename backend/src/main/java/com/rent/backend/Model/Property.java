@@ -20,7 +20,7 @@ public class Property {
     private String country;
     private String city;
     private int roomsNumber;
-    private double Area;
+    private double area;
     private int bathroomsNumber;
     private boolean availability;
     private double price;
@@ -55,11 +55,11 @@ public class Property {
     }
 
     public double getArea() {
-        return Area;
+        return area;
     }
 
     public void setArea(double area) {
-        Area = area;
+        this.area = area;
     }
 
     public int getBathroomsNumber() {
