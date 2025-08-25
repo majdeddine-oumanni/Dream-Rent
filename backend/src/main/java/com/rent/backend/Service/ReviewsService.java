@@ -11,6 +11,8 @@ import com.rent.backend.Repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReviewsService {
     private final ReviewsMapper mapper;
@@ -35,6 +37,11 @@ public class ReviewsService {
         reviews.setUser(user);
         Reviews savedReview = repository.save(reviews);
         return mapper.toDTO(savedReview);
+    }
+
+    public List<ReviewsDTO> findAllByProperty(Long propertyId){
+        List<Reviews> reviews = repository.findAllByProperty_Id(propertyId);
+        return mapper.toDTOs(reviews);
     }
     
 }
