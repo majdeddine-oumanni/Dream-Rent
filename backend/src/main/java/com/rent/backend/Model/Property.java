@@ -37,6 +37,12 @@ public class Property {
     @OneToMany(mappedBy = "property")
     private List<Reservation> reservations;
 
+    @OneToMany(mappedBy = "property")
+    private List<Reviews> reviews;
+
+    private float avrgReview;
+
+
 
     public Long getId() {
         return id;
@@ -148,5 +154,21 @@ public class Property {
 
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public List<Reviews> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Reviews> reviews) {
+        this.reviews = reviews;
+    }
+
+    public float getAvrgReview() {
+        return avrgReview;
+    }
+
+    public void setAvrgReview(float avrgReview) {
+        this.avrgReview = avrgReview;
     }
 }

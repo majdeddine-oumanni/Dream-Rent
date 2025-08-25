@@ -21,6 +21,7 @@ public class PropertyDTO {
     private double price;
     private List<String> images = new ArrayList<>();
     private PropertyType propertyType;
+    private float avrgReview;
 
 
     public String getTitle() {
@@ -109,5 +110,13 @@ public class PropertyDTO {
 
     public void setPropertyType(PropertyType propertyType) {
         this.propertyType = propertyType;
+    }
+
+    public float getAvrgReview() {
+        return avrgReview;
+    }
+
+    public void setAvrgReview(float avrgReview) {
+        this.avrgReview = avrgReview;
     }
 }
