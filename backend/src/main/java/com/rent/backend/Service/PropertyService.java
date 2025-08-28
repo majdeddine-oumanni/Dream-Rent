@@ -51,6 +51,7 @@ public class PropertyService {
         property.setRoomsNumber(dto.getRoomsNumber());
         property.setArea(dto.getArea());
         property.setBathroomsNumber(dto.getBathroomsNumber());
+        property.setGuests(dto.getGuests());
 
         Property savedProperty = repository.save(property);
 

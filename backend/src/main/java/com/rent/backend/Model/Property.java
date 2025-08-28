@@ -24,6 +24,7 @@ public class Property {
     private int bathroomsNumber;
     private boolean availability;
     private double price;
+    private int guests;
 
     @ElementCollection
     private List<String> images = new ArrayList<>();
@@ -146,6 +147,14 @@ public class Property {
 
     public void setOwner(Owner owner) {
         this.owner = owner;
+    }
+
+    public int getGuests() {
+        return guests;
+    }
+
+    public void setGuests(int guests) {
+        this.guests = guests;
     }
 
     public List<Reservation> getReservations() {

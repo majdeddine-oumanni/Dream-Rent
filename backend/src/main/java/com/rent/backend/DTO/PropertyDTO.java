@@ -19,6 +19,7 @@ public class PropertyDTO {
     private int bathroomsNumber;
     private boolean availability;
     private double price;
+    private int guests;
     private List<String> images = new ArrayList<>();
     private PropertyType propertyType;
     private float avrgReview;
@@ -118,5 +119,13 @@ public class PropertyDTO {
 
     public void setAvrgReview(float avrgReview) {
         this.avrgReview = avrgReview;
+    }
+
+    public int getGuests() {
+        return guests;
+    }
+
+    public void setGuests(int guests) {
+        this.guests = guests;
     }
 }
