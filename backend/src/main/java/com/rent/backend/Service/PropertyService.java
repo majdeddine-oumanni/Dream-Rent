@@ -5,7 +5,6 @@ import com.rent.backend.Mappers.PropertyMapper;
 import com.rent.backend.Model.Owner;
 import com.rent.backend.Model.Property;
 import com.rent.backend.Model.PropertyType;
-import com.rent.backend.Model.User;
 import com.rent.backend.Repositories.PropertyRepository;
 import com.rent.backend.Repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;

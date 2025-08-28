@@ -36,6 +36,11 @@ public class ReviewsService {
         reviews.setProperty(property);
         reviews.setUser(user);
         Reviews savedReview = repository.save(reviews);
+
+        float avg = repository.getAvgPropertyReviews(property_id);
+        property.setAvrgReview(avg);
+        propertyRepository.save(property);
+
         return mapper.toDTO(savedReview);
     }
 
