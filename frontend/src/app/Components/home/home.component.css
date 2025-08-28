@@ -75,6 +75,10 @@
   z-index: 2;
 }
 
+.property-badge.not-available{
+  background: rgb(255, 40, 40);
+}
+
 .property-badge.featured {
   background: #f39c12;
 }
