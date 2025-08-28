@@ -9,9 +9,18 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReservationDTO {
+    private Long id;
     private LocalDate startDate;
     private LocalDate endDate;
     private ReservationStatus reservationStatus;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public LocalDate getStartDate() {
         return startDate;

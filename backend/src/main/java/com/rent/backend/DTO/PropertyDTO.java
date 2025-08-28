@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PropertyDTO {
+    private Long id;
     private String title;
     private String description;
     private String country;
@@ -24,6 +25,13 @@ public class PropertyDTO {
     private PropertyType propertyType;
     private float avrgReview;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
