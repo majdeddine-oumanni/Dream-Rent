@@ -33,6 +33,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/user/**").hasAnyRole("ADMIN")
                 //.requestMatchers("/api/property/**").hasAnyRole("ADMIN", "USER", "TENANT")
                 .requestMatchers("/api/properties/**").permitAll()
+                .requestMatchers("/api/reviews/**").hasAnyRole("ADMIN", "TENANT", "OWNER")
                 .anyRequest()
                 .authenticated()
                 .and()
