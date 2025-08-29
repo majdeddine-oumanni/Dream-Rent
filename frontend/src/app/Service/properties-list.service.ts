@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 
 interface Property{
+  id: number,
   title: string,
   description: string,
   country: string,
