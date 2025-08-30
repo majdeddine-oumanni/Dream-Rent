@@ -30,6 +30,7 @@ public class UserService {
         user.setLastName(dto.getLastName());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         user.setCountry(dto.getCountry());
+        user.setPhone(dto.getPhone());
 
         User savedUser = repository.save(user);
         return mapper.toDTO(savedUser);

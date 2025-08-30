@@ -16,6 +16,8 @@ public class UserDTO {
     private String password;
     private Role role;
     private String country;
+    private String phone;
+
 
     public Long getId() {
         return id;
@@ -79,5 +81,13 @@ public class UserDTO {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

@@ -10,6 +10,7 @@ import com.rent.backend.Repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -52,6 +53,7 @@ public class PropertyService {
         property.setArea(dto.getArea());
         property.setBathroomsNumber(dto.getBathroomsNumber());
         property.setGuests(dto.getGuests());
+        property.setFeatures(new HashSet<>(dto.getFeatures()));
 
         Property savedProperty = repository.save(property);
 

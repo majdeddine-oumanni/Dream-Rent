@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,6 +26,9 @@ public class PropertyDTO {
     private List<String> images = new ArrayList<>();
     private PropertyType propertyType;
     private float avrgReview;
+    private Set<String> features = new HashSet<>();
+
+
 
     public Long getId() {
         return id;
@@ -135,5 +140,13 @@ public class PropertyDTO {
 
     public void setGuests(int guests) {
         this.guests = guests;
+    }
+
+    public Set<String> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(Set<String> features) {
+        this.features = features;
     }
 }

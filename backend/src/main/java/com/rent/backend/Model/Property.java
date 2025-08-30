@@ -5,7 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @AllArgsConstructor
@@ -25,6 +27,9 @@ public class Property {
     private boolean availability;
     private double price;
     private int guests;
+
+    @ElementCollection
+    private Set<String> features = new HashSet<>();
 
     @ElementCollection
     private List<String> images = new ArrayList<>();
@@ -179,5 +184,13 @@ public class Property {
 
     public void setAvrgReview(float avrgReview) {
         this.avrgReview = avrgReview;
+    }
+
+    public Set<String> getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(Set<String> features) {
+        this.features = features;
     }
 }

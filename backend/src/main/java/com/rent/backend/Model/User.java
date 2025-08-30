@@ -25,6 +25,7 @@ public class User implements UserDetails {
     private String email;
     private boolean isBanned;
     private String country;
+    private String phone;
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -124,5 +125,21 @@ public class User implements UserDetails {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public List<Reviews> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Reviews> reviews) {
+        this.reviews = reviews;
     }
 }

@@ -9,4 +9,12 @@ import java.util.List;
 public class Owner extends User{
     @OneToMany(mappedBy = "owner")
     private List<Property> properties;
+
+    public List<Property> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
+    }
 }
