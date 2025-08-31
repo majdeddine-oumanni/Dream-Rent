@@ -19,6 +19,13 @@ interface Property{
   propertyType: 'APARTMENT' | 'VILLA' | 'HOUSE',
   avrgReview : number
 }
+interface Owner{
+  firstName: string,
+  lastName: string,
+  email: string,
+  country: string,
+  phone: string
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +38,14 @@ export class PropertiesListService {
 
   retrieveAllProperties():Observable<Property[]>{
     return this.http.get<Property[]>(this.baseUrl);
+  }
+
+  retrievePropertyById(id:number):Observable<Property>{
+    return this.http.get<Property>(`${this.baseUrl}/${id}`);
+  }
+
+  getOwnerDataByPropertyId(id:number):Observable<Owner>{
+    return this.http.get<Owner>(`${this.baseUrl}/ownerOfProperty/${id}`);
   }
 
 }
