@@ -1,6 +1,7 @@
 package com.rent.backend.Controller;
 
 import com.rent.backend.DTO.PropertyDTO;
+import com.rent.backend.DTO.UserDTO;
 import com.rent.backend.Model.PropertyType;
 import com.rent.backend.Service.PropertyService;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -65,5 +66,10 @@ public class PropertyController {
     @GetMapping("/search/type")
     public List<PropertyDTO> searchPropertiesByType(@RequestParam PropertyType type) {
         return service.findPropertiesByPropertyType(type);
+    }
+
+    @GetMapping("ownerOfProperty/{property_id}")
+    public UserDTO getOwnerByPropertyId(@PathVariable Long property_id){
+        return service.getOwnerByPropertyId(property_id);
     }
 }

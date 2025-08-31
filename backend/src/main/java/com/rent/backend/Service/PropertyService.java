@@ -1,10 +1,13 @@
 package com.rent.backend.Service;
 
 import com.rent.backend.DTO.PropertyDTO;
+import com.rent.backend.DTO.UserDTO;
 import com.rent.backend.Mappers.PropertyMapper;
+import com.rent.backend.Mappers.UserMapper;
 import com.rent.backend.Model.Owner;
 import com.rent.backend.Model.Property;
 import com.rent.backend.Model.PropertyType;
+import com.rent.backend.Model.User;
 import com.rent.backend.Repositories.PropertyRepository;
 import com.rent.backend.Repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,11 +21,13 @@ public class PropertyService {
     private final PropertyRepository repository;
     private final PropertyMapper mapper;
     private final UserRepository userRepository;
+    private final UserMapper userMapper;
 
-    public PropertyService(PropertyRepository repository, PropertyMapper mapper, UserRepository userRepository) {
+    public PropertyService(PropertyRepository repository, PropertyMapper mapper, UserRepository userRepository, UserMapper userMapper) {
         this.repository = repository;
         this.mapper = mapper;
         this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
 
     public PropertyDTO create(PropertyDTO dto){
@@ -107,4 +112,10 @@ public class PropertyService {
         return mapper.toDTOs(properties);
     }
 
+    public UserDTO getOwnerByPropertyId(Long property_id) {
+        Property property = repository.findById(property_id).
+                orElseThrow(() -> new RuntimeException("Property not found"));
+        User owner = property.getOwner();
+        return userMapper.toDTO(owner);
+    }
 }
