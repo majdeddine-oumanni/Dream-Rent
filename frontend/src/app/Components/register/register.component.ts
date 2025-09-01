@@ -10,6 +10,7 @@ interface User {
   email: string,
   password: string,
   country: string,
+  phone: string,
   role: 'ADMIN' | 'OWNER' | 'TENANT'
 };
 @Component({

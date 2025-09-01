@@ -8,7 +8,8 @@ interface Payload{
   email: string,
   password: string,
   country: string,
-  role: 'ADMIN' | 'OWNER' | 'TENANT'
+  role: 'ADMIN' | 'OWNER' | 'TENANT',
+  phone : string
 }
 interface Credentials{
   email: string,
@@ -45,5 +46,15 @@ export class AuthService {
   }
   private setAuthData(token: string): void {
     localStorage.setItem(this.tokenKey, token);
+  }
+
+
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
+
+  isLoggedIn(): boolean {
+    const t = this.getToken();
+    return !!t;
   }
 }
