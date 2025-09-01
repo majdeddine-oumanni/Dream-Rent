@@ -15,6 +15,7 @@ public class RegisterRequest {
     private boolean isBanned;
     private String country;
     private Role role;
+    private String phone;
 
     public Role getRole() {
         return role;
@@ -70,6 +71,14 @@ public class RegisterRequest {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
 

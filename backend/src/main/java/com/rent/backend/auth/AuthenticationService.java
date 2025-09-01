@@ -46,6 +46,7 @@ public class AuthenticationService {
         user.setCountry(request.getCountry());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(request.getRole());
+        user.setPhone(request.getPhone());
 
         repository.save(user); // use appropriate repository for the subclass
 
@@ -53,6 +54,13 @@ public class AuthenticationService {
 
         AuthenticationResponse response = new AuthenticationResponse();
         response.setToken(jwtToken);
+        response.setFirstName(user.getFirstName());
+        response.setLastName(user.getLastName());
+        response.setBanned(user.isBanned());
+        response.setCountry(user.getCountry());
+        response.setEmail(user.getEmail());
+        response.setPhone(user.getPhone());
+        response.setRole(user.getRole());
         return response;
     }
 
@@ -69,7 +77,16 @@ public class AuthenticationService {
         String jwtToken = jwtService.generateToken(user);
 
         AuthenticationResponse response = new AuthenticationResponse();
+
         response.setToken(jwtToken);
+        response.setFirstName(user.getFirstName());
+        response.setLastName(user.getLastName());
+        response.setBanned(user.isBanned());
+        response.setCountry(user.getCountry());
+        response.setEmail(user.getEmail());
+        response.setPhone(user.getPhone());
+        response.setRole(user.getRole());
+
         return response;
     }
 }
