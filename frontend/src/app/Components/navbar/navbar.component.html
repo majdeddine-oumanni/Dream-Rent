@@ -111,12 +111,18 @@
 
           <!-- Auth Buttons -->
           <div class="auth-buttons">
-              <a [routerLink]="['/login']" class="btn btn-auth btn-login">
-                <i class="fas fa-sign-in-alt me-1"></i>Login
-              </a>
-              <a [routerLink]="['/register']" class="btn btn-auth btn-register">
-                <i class="fas fa-user-plus me-1"></i>Register
-              </a>
+              @if (!service.isLoggedIn()) {
+                <a [routerLink]="['/login']" class="btn btn-auth btn-login">
+                  <i class="fas fa-sign-in-alt me-1"></i>Login
+                </a>
+                <a [routerLink]="['/register']" class="btn btn-auth btn-register">
+                  <i class="fas fa-user-plus me-1"></i>Register
+                </a>
+              }@else {
+                <a [routerLink]="['/profile']" class="btn">
+                  <div class="user-avatar">JD</div>
+                </a>
+              }
           </div>
       </div>
   </div>
