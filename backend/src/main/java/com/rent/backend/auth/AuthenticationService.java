@@ -54,6 +54,7 @@ public class AuthenticationService {
 
         AuthenticationResponse response = new AuthenticationResponse();
         response.setToken(jwtToken);
+        response.setId(user.getId());
         response.setFirstName(user.getFirstName());
         response.setLastName(user.getLastName());
         response.setBanned(user.isBanned());
@@ -79,6 +80,7 @@ public class AuthenticationService {
         AuthenticationResponse response = new AuthenticationResponse();
 
         response.setToken(jwtToken);
+        response.setId(user.getId());
         response.setFirstName(user.getFirstName());
         response.setLastName(user.getLastName());
         response.setBanned(user.isBanned());
