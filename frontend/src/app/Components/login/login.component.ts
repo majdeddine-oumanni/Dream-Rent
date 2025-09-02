@@ -25,9 +25,9 @@ export class LoginComponent {
   onSubmit(){
     const data = this.loginForm.value as requiredData;
     if (this.loginForm.valid) {
-    this.service.login(data).subscribe((response)=>{
-      console.log(response);
-    })
+      this.service.login(data).subscribe((response)=>{
+        this.service.setUserData(response);
+      })
     }
   }
 }

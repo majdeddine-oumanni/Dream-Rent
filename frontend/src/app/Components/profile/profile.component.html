@@ -1,81 +1,62 @@
 <div class="container">
   <div class="profile-header">
-    <div class="profile-avatar">JD</div>
-    <h1 class="profile-name">John Doe</h1>
-    <p class="profile-email">john.doe&#64;email.com</p>
+    <div class="profile-avatar">{{user.firstName.charAt(0).toUpperCase()}}{{user.lastName.charAt(0).toUpperCase()}} </div>
+    <h1 class="profile-name">{{user.firstName}} {{user.lastName}}</h1>
+    <p class="profile-email"> {{user.email}} </p>
   </div>
 
   <div class="profile-form">
     <h2 class="form-title">Personal Information</h2>
 
-    <button class="edit-mode-toggle">✏️ Edit Profile</button>
+    <button (click)="toggleEditMode()" class="edit-mode-toggle">
+      {{ editMode ? "Lock Profile" : "Edit Profile" }}
+    </button>
 
-    <div class="success-message" style="display: none;">
-        ✅ Profile updated successfully!
-    </div>
+    @if (updated) {
+      <div class="success-message">
+        <i class="bi bi-check-square-fill"></i> Profile updated successfully!
+      </div>
+    }
 
-    <form>
-        <div class="form-grid">
-            <div class="form-group">
-              <label class="form-label">First Name</label>
-              <input type="text" class="form-input" value="John" disabled>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Last Name</label>
-              <input type="text" class="form-input" value="Doe" disabled>
-            </div>
-
-            <div class="form-group full-width">
-              <label class="form-label">Email Address</label>
-              <input type="email" class="form-input" value="john.doeemail.com" disabled>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-input" value="+1 (555) 123-4567" disabled>
-            </div>
-
-            <div class="form-group password-input">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-input" value="password123" disabled>
-              <button type="button" class="password-toggle">👁️</button>
-            </div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="updateFrom">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" id="firstName" class="form-input" [(ngModel)]="user.firstName" name="firstName" [disabled]="!editMode" formControlName="firstName">
         </div>
 
-        <div class="button-group" style="display: none;">
-          <button type="submit" class="btn btn-primary">💾 Save Changes</button>
-          <button type="button" class="btn btn-outline">❌ Cancel</button>
+        <div class="form-group">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" id="lastName" class="form-input" [(ngModel)]="user.lastName" name="lastName" [disabled]="!editMode" formControlName="lastName">
         </div>
+
+        <div class="form-group full-width">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" id="email" class="form-input" [(ngModel)]="user.email" name="email" [disabled]="!editMode" formControlName="email">
+        </div>
+
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" id="phone" class="form-input" [(ngModel)]="user.phone" name="phone" [disabled]="!editMode" formControlName="phone">
+        </div>
+
+        <div class="form-group password-input">
+          <label for="country" class="form-label">Country</label>
+          <input type="text" id="country" class="form-input" [(ngModel)]="user.country" name="country" [disabled]="!editMode" formControlName="country">
+        </div>
+      </div>
+
+      @if (editMode) {
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary" (click)="updatedUser()"><i class="bi bi-bookmark-fill"></i> Save Changes</button>
+          <button type="button" class="btn btn-outline" (click)="cancelEdit()"><i class="bi bi-x-square-fill"></i> Cancel</button>
+        </div>
+      }
     </form>
   </div>
 
   <div class="account-actions">
     <h2 class="actions-title">Account Settings</h2>
-
-    <!-- <div class="action-item">
-      <div class="action-description">
-        <div class="action-title">Change Password</div>
-        <div class="action-subtitle">Update your account password for better security</div>
-      </div>
-        <button class="btn btn-secondary">🔐 Change</button>
-    </div>
-
-    <div class="action-item">
-      <div class="action-description">
-        <div class="action-title">Download My Data</div>
-        <div class="action-subtitle">Export all your personal data and booking history</div>
-      </div>
-      <button class="btn btn-outline">📥 Download</button>
-    </div>
-
-    <div class="action-item">
-      <div class="action-description">
-        <div class="action-title">Delete Account</div>
-        <div class="action-subtitle">Permanently delete your account and all associated data</div>
-      </div>
-      <button class="btn btn-danger">🗑️ Delete</button>
-    </div> -->
 
     <div class="action-item">
       <div class="action-description">

@@ -48,6 +48,14 @@ export class AuthService {
     localStorage.setItem(this.tokenKey, token);
   }
 
+  setUserData(user:any):void{
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getUserData():any{
+    return localStorage.getItem('user');
+  }
+
 
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);

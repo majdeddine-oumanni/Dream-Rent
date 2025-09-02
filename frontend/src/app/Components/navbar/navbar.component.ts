@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from "@angular/router";
@@ -10,6 +10,10 @@ import { AuthService } from '../../Service/auth.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
   constructor(public service : AuthService) {}
+  user :any;
+  ngOnInit(): void {
+    this.user = JSON.parse(this.service.getUserData());
+  }
 }
