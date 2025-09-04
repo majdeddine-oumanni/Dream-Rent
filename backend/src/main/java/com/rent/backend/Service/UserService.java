@@ -2,10 +2,14 @@ package com.rent.backend.Service;
 
 import com.rent.backend.DTO.UserDTO;
 import com.rent.backend.Mappers.UserMapper;
+import com.rent.backend.Model.Role;
 import com.rent.backend.Model.User;
 import com.rent.backend.Repositories.UserRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -21,20 +25,30 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserDTO update(Long id, UserDTO dto){
+    public UserDTO update(Long id, UserDTO dto) {
         User user = repository.findById(id)
-                .orElseThrow(()-> new RuntimeException("user not found"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
-        user.setFirstName(dto.getFirstName());
-        user.setEmail(dto.getEmail());
-        user.setLastName(dto.getLastName());
-        user.setPassword(passwordEncoder.encode(dto.getPassword()));
-        user.setCountry(dto.getCountry());
-        user.setPhone(dto.getPhone());
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        User loggedInUser = repository.findByEmail(email);
 
-        User savedUser = repository.save(user);
-        return mapper.toDTO(savedUser);
+        if (loggedInUser.getRole().equals(Role.ADMIN) || loggedInUser.getId().equals(id)) {
+            user.setFirstName(dto.getFirstName());
+            user.setLastName(dto.getLastName());
+            user.setEmail(dto.getEmail());
+            user.setCountry(dto.getCountry());
+            user.setPhone(dto.getPhone());
+            if (dto.getPassword() != null) {
+                user.setPassword(passwordEncoder.encode(dto.getPassword()));
+            }
+
+            User savedUser = repository.save(user);
+            return mapper.toDTO(savedUser);
+        }
+
+        throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You are not allowed to update this user");
     }
+
 
     public List<UserDTO> getAllUsers(){
         return mapper.toDTOs(repository.findAll());
