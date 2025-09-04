@@ -74,12 +74,27 @@ export class ProfileComponent implements OnInit{
 
   cancelEdit() {
     this.editMode = false;
+    this.updateFrom.disable();
+
+    this.updateFrom.patchValue({
+      firstName: this.user.firstName,
+      lastName: this.user.lastName,
+      email: this.user.email,
+      country: this.user.country,
+      phone: this.user.phone
+    });
   }
+
 
   updated : boolean = false;
 
   updatedUser(){
     this.updated = true;
   }
+
+  logout(){
+    this.service.logout();
+  }
+
 
 }
