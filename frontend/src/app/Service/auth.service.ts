@@ -49,11 +49,11 @@ export class AuthService {
   }
 
   setUserData(user:any):void{
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem(this.userKey, JSON.stringify(user));
   }
 
   getUserData():any{
-    return localStorage.getItem('user');
+    return localStorage.getItem(this.userKey);
   }
 
 
@@ -65,4 +65,11 @@ export class AuthService {
     const t = this.getToken();
     return !!t;
   }
+
+  logout() {
+    localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.userKey);
+    window.location.href = "/";
+  }
+
 }

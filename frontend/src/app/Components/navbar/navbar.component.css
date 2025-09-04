@@ -148,8 +148,8 @@
     transform: translateY(-1px);
 }
 .user-avatar {
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   background: linear-gradient(135deg, #3CEAFA, #00d2d2);
   border-radius: 50%;
   display: flex;

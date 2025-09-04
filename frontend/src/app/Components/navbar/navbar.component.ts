@@ -10,10 +10,7 @@ import { AuthService } from '../../Service/auth.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent{
   constructor(public service : AuthService) {}
-  user :any;
-  ngOnInit(): void {
-    this.user = JSON.parse(this.service.getUserData());
-  }
+
 }

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import { AuthService } from '../../Service/auth.service';
+import { Router } from '@angular/router';
 
 interface requiredData{
   email: string,
@@ -16,7 +17,7 @@ interface requiredData{
 })
 export class LoginComponent {
   loginForm !: FormGroup;
-  constructor(private fb : FormBuilder, private service: AuthService){
+  constructor(private fb : FormBuilder, private service: AuthService, private router: Router){
     this.loginForm = fb.group({
       email : [''],
       password : ['']
@@ -27,7 +28,13 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.service.login(data).subscribe((response)=>{
         this.service.setUserData(response);
+        this.routing();
       })
+    }
+  }
+  routing(){
+    if(this.service.isLoggedIn()){
+      this.router.navigate(['/']);
     }
   }
 }
