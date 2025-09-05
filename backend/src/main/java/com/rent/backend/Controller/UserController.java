@@ -1,6 +1,7 @@
 package com.rent.backend.Controller;
 
 import com.rent.backend.DTO.UserDTO;
+import com.rent.backend.Model.Role;
 import com.rent.backend.Service.UserService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -50,5 +51,10 @@ public class UserController {
     @GetMapping("/totalNumber")
     public long getAllUsersNumber(){
         return service.getUsersNumber();
+    }
+
+    @GetMapping("/numberByRole")
+    public long getUsersNumByRole(@RequestParam Role role){
+        return service.getUsersNumberByRole(role);
     }
 }

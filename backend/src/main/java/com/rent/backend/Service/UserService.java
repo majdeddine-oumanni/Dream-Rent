@@ -70,6 +70,10 @@ public class UserService {
     }
 
     public long getUsersNumber(){
-        return repository.getAllUsersNumber();
+        return repository.count();
+    }
+
+    public long getUsersNumberByRole(Role role){
+        return repository.getNumberOfUsersByRole(role);
     }
 }
