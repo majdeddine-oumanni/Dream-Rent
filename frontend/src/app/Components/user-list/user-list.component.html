@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title">Users Management</h1>
+    <p class="page-subtitle">Manage all registered users and their information</p>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-number">156</div>
+      <div class="stat-label">Total Users</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">12</div>
+      <div class="stat-label">Admins</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">89</div>
+      <div class="stat-label">Active Users</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-number">25</div>
+      <div class="stat-label">Property Owners</div>
+    </div>
+  </div>
+
+  <div class="users-grid">
+    @for (user of users; track $index) {
+          <div class="user-card">
+            <div class="user-header">
+                <div class="user-avatar">{{user.firstName.charAt(0).toUpperCase()}}{{user.lastName.charAt(0).toUpperCase()}} </div>
+                <div>
+                  <div class="user-name">{{user.firstName}} {{user.lastName}}</div>
+                  <span class="user-role" [ngClass]="user.role">{{user.role}}</span>
+                </div>
+            </div>
+            <div class="user-details">
+                <div class="detail-row">
+                  <div class="detail-icon"><i class="bi bi-globe-europe-africa"></i></div>
+                  <span class="detail-label">Country:</span>
+                  <span class="detail-value"> {{user.country}} </span>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-icon"><i class="bi bi-envelope-at"></i></div>
+                  <span class="detail-label">Email:</span>
+                  <span class="detail-value"> {{user.email}} </span>
+                </div>
+                <div class="detail-row">
+                  <div class="detail-icon"><i class="bi bi-telephone-fill"></i></div>
+                  <span class="detail-label">Phone:</span>
+                  <span class="detail-value"> {{user.phone}} </span>
+                </div>
+            </div>
+            <div class="user-actions">
+              <button class="btn btn-update"><i class="bi bi-pencil-square"></i> Update</button>
+              <button class="btn btn-delete" (click)="deleteUser(user.id)"><i class="bi bi-trash3-fill"></i> Delete</button>
+            </div>
+        </div>
+    }
+  </div>
+</div>
