@@ -68,4 +68,8 @@ public class UserService {
                 orElseThrow(()-> new RuntimeException("user not found"));
         return mapper.toDTO(user);
     }
+
+    public long getUsersNumber(){
+        return repository.getAllUsersNumber();
+    }
 }
