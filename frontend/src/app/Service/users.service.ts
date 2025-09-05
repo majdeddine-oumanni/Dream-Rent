@@ -10,6 +10,16 @@ interface User{
   phone : string
 }
 
+interface Users{
+  id:number,
+  firstName: string,
+  lastName : string,
+  email: string,
+  role : string,
+  country: string,
+  phone : string
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +37,12 @@ export class UsersService {
     return this.http.put<User>(`${this.url}/update/${id}`, user);
   }
 
-  getUsers():Observable<User[]>{
-    return this.http.get<User[]>(this.url);
+  getUsers():Observable<Users[]>{
+    return this.http.get<Users[]>(this.url);
   }
 
+  deleteUser(id:number):Observable<void>{
+    return this.http.delete<void>(`${this.url}/delete/${id}`);
+  }
 
 }
