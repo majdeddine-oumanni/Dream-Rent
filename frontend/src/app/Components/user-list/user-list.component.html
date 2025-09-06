@@ -6,19 +6,19 @@
 
   <div class="stats-bar">
     <div class="stat-item">
-      <div class="stat-number">156</div>
+      <div class="stat-number">{{usersTotalNumber}}</div>
       <div class="stat-label">Total Users</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">12</div>
+      <div class="stat-number"> {{adminsNumber}} </div>
       <div class="stat-label">Admins</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">89</div>
-      <div class="stat-label">Active Users</div>
+      <div class="stat-number"> {{tenantsNumber}} </div>
+      <div class="stat-label">tenants</div>
     </div>
     <div class="stat-item">
-      <div class="stat-number">25</div>
+      <div class="stat-number"> {{ownersNumber}} </div>
       <div class="stat-label">Property Owners</div>
     </div>
   </div>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="user-actions">
-              <button class="btn btn-update"><i class="bi bi-pencil-square"></i> Update</button>
+              <button class="btn btn-update" [routerLink]="[`update_user/${user.id}`]"><i class="bi bi-pencil-square"></i> Update</button>
               <button class="btn btn-delete" (click)="deleteUser(user.id)"><i class="bi bi-trash3-fill"></i> Delete</button>
             </div>
         </div>

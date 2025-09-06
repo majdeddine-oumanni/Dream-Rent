@@ -20,6 +20,17 @@ interface Users{
   phone : string
 }
 
+interface UpdateUser{
+  id: number,
+  firstName: string,
+  lastName : string,
+  email: string,
+  role : string,
+  country: string,
+  phone : string,
+  isBanned : boolean
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -37,12 +48,28 @@ export class UsersService {
     return this.http.put<User>(`${this.url}/update/${id}`, user);
   }
 
+  updateUserByAdmin(id: number, user: UpdateUser):Observable<UpdateUser>{
+    return this.http.put<UpdateUser>(`${this.url}/update/${id}`, user);
+  }
+
   getUsers():Observable<Users[]>{
     return this.http.get<Users[]>(this.url);
   }
 
   deleteUser(id:number):Observable<void>{
     return this.http.delete<void>(`${this.url}/delete/${id}`);
+  }
+
+  getUsersNumber():Observable<number>{
+    return this.http.get<number>(`${this.url}/totalNumber`);
+  }
+
+  getUsersNumberByRole(role:string):Observable<number>{
+    return this.http.get<number>(`${this.url}/numberByRole?role=${role}`);
+  }
+
+  getUserById(id:number):Observable<UpdateUser>{
+    return this.http.get<UpdateUser>(`${this.url}/${id}`);
   }
 
 }

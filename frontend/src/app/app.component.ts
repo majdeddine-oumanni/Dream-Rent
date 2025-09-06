@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 
 @Component({
@@ -9,5 +9,10 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'frontend';
+  constructor(private router : Router) {}
+
+  isOnAuth():boolean{
+    let url = this.router.url;
+    return url.includes('login') || url.includes('register');
+  }
 }
