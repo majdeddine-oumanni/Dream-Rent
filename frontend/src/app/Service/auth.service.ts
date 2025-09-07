@@ -66,6 +66,20 @@ export class AuthService {
     return !!t;
   }
 
+  data : string = "";
+  isAdmin(): boolean{
+    if(!this.isLoggedIn()){
+      return false;
+    }
+    this.data = localStorage.getItem("auth_user") || "";
+    const user = JSON.parse(this.data);
+    if(user.role === "ADMIN"){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
   logout() {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.userKey);
