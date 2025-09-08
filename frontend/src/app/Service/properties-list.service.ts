@@ -48,4 +48,8 @@ export class PropertiesListService {
     return this.http.get<Owner>(`${this.baseUrl}/ownerOfProperty/${id}`);
   }
 
+  deleteProperty(id : number):Observable<void>{
+    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
 }

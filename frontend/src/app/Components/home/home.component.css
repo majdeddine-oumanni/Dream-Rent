@@ -101,26 +101,11 @@
 }
 
 .wishlist-btn:hover {
-  background: white;
-  color: #008080;
+  background: red;
+  color: white;
   transform: scale(1.1);
 }
 
-.wishlist-btn.active {
-  color: #e74c3c;
-}
-
-.image-gallery-indicator {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  z-index: 2;
-}
 
 .property-content {
   padding: 1.5rem;

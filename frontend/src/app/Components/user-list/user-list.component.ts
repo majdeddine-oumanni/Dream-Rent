@@ -42,13 +42,13 @@ export class UserListComponent implements OnInit{
     })
   }
 
-  deleteUser(id:number){
-    this.service.deleteUser(id).subscribe(()=>{
-      const confirmed = confirm("Are you sure you want to delete this user?");
-      if(confirmed){
-        this.users = this.users.filter(user => user.id !== id)
-      }
-    });
+  deleteUser(id: number) {
+    const confirmed = confirm("Are you sure you want to delete this user?");
+    if (confirmed) {
+      this.service.deleteUser(id).subscribe(() => {
+        this.users = this.users.filter(user => user.id !== id);
+      });
+    }
   }
 
   getUsersNumber(){

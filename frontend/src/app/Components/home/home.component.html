@@ -1,11 +1,9 @@
 <div class="container-fluid properties-container">
-    <!-- Header Section -->
     <div class="section-header">
         <h1 class="section-title">Find Your Perfect Stay</h1>
         <p class="section-subtitle">Discover amazing places to stay around the world with comfort and style</p>
     </div>
 
-    <!-- Filters Section -->
     <div class="row justify-content-center">
         <div class="col-lg-10">
             <div class="filters-section">
@@ -25,11 +23,9 @@
     </div>
 
 </div>
-<!-- Properties Grid -->
 <div class="row justify-content-center">
 <div class="col-lg-10">
   <div class="row">
-      <!-- Property Card 1 -->
       @for (item of properties; track $index) {
         <div class="col-lg-4 col-md-6">
           <div class="card property-card">
@@ -40,12 +36,14 @@
                   }@else {
                     <div class="property-badge not-available"> Not Available </div>
                   }
-                  <button class="wishlist-btn">
-                      <i class="far fa-heart"></i>
-                  </button>
-                  <div class="image-gallery-indicator">
+                  @if (authService.isAdmin()) {
+                    <button class="wishlist-btn" data-toggle="tooltip" data-placement="left" title="Delete Property" (click)="deleteProperty(item.id)">
+                      <i class="bi bi-trash3"></i>
+                    </button>
+                  }
+                  <!-- <div class="image-gallery-indicator">
                       <i class="fas fa-images me-1"></i>12
-                  </div>
+                  </div> -->
               </div>
               <div class="property-content">
                   <div class="property-location">
@@ -68,10 +66,6 @@
                           <i class="fas fa-users"></i>
                           {{item.guests}} guests
                       </div>
-                      <!-- <div class="feature-item">
-                          <i class="fas fa-wifi"></i>
-                          WiFi
-                      </div> -->
                   </div>
 
                   <div class="property-rating">
