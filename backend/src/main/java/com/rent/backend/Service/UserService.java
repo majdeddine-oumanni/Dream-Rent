@@ -38,6 +38,7 @@ public class UserService {
             user.setEmail(dto.getEmail());
             user.setCountry(dto.getCountry());
             user.setPhone(dto.getPhone());
+            user.setRole(dto.getRole());
             if (dto.getPassword() != null) {
                 user.setPassword(passwordEncoder.encode(dto.getPassword()));
             }
@@ -57,12 +58,14 @@ public class UserService {
     public void delete(Long id){
         repository.deleteById(id);
     }
+
     public UserDTO updateBanning(Long id, boolean isBanned){
         User user = repository.findById(id).
                 orElseThrow(()-> new RuntimeException("user not found"));
         user.setBanned(isBanned);
         return mapper.toDTO(user);
     }
+    
     public UserDTO getUserById(Long id){
         User user = repository.findById(id).
                 orElseThrow(()-> new RuntimeException("user not found"));

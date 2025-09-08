@@ -4,10 +4,7 @@ import com.rent.backend.DTO.PropertyDTO;
 import com.rent.backend.DTO.UserDTO;
 import com.rent.backend.Mappers.PropertyMapper;
 import com.rent.backend.Mappers.UserMapper;
-import com.rent.backend.Model.Owner;
-import com.rent.backend.Model.Property;
-import com.rent.backend.Model.PropertyType;
-import com.rent.backend.Model.User;
+import com.rent.backend.Model.*;
 import com.rent.backend.Repositories.PropertyRepository;
 import com.rent.backend.Repositories.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -73,12 +70,19 @@ public class PropertyService {
     public void delete(Long id) {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        Owner owner = (Owner) userRepository.findByEmail(email);
+        User user = userRepository.findByEmail(email);
+
+        if (user == null) {
+            throw new RuntimeException("User not found");
+        }
+
+        Role role = user.getRole();
 
         Property property = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Property not found"));
 
-        if (!property.getOwner().getId().equals(owner.getId())) {
+
+        if (!property.getOwner().getId().equals(user.getId()) && role != Role.ADMIN) {
             throw new RuntimeException("You are not allowed to delete this property");
         }
 

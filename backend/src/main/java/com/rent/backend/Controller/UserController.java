@@ -42,17 +42,19 @@ public class UserController {
         return service.updateBanning(id, isBanned);
     }
 
-    //ask about this urgently
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/{id}")
     public UserDTO getUserById(@PathVariable Long id){
         return service.getUserById(id);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/totalNumber")
     public long getAllUsersNumber(){
         return service.getUsersNumber();
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/numberByRole")
     public long getUsersNumByRole(@RequestParam Role role){
         return service.getUsersNumberByRole(role);
