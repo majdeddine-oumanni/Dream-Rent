@@ -94,23 +94,23 @@
         </div>
 
         <div class="details-sidebar">
-            <div class="booking-card">
+            <form class="booking-card" [formGroup]="reservation" (ngSubmit)="onSubmit()">
                 <div class="booking-price">MAD{{property.price}} </div>
                 <div class="booking-period">per night</div>
 
                 <div class="booking-form">
                     <div class="form-group">
                         <label>Move-in Date</label>
-                        <input type="date" />
+                        <input type="date" formControlName="startDate"/>
                     </div>
                     <div class="form-group">
-                        <label>Lease Duration</label>
-                        <input type="text" placeholder="12 months" />
+                        <label>End-duration Date</label>
+                        <input type="date" formControlName="endDate" />
                     </div>
-                </div>
+                  </div>
 
-                <button class="book-now-btn">Schedule Viewing</button>
-            </div>
+                <button class="book-now-btn" type="submit">Schedule Viewing</button>
+            </form>
 
             <div class="contact-info">
                 <h3 class="section-title">Contact Agent</h3>

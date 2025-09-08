@@ -1,16 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PropertiesListService } from '../../Service/properties-list.service';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RequestService } from '../../Service/request.service';
 
+interface Reservation{
+  startDate: string,
+  endDate: string,
+  property_id : number
+}
 @Component({
   selector: 'app-property-details',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './property-details.component.html',
   styleUrl: './property-details.component.css'
 })
 export class PropertyDetailsComponent implements OnInit{
   propertyId !: number;
-  constructor(private route : ActivatedRoute, private service : PropertiesListService) {}
+  reservation !: FormGroup;
+  constructor(private route : ActivatedRoute, private service : PropertiesListService, private fb : FormBuilder, private request : RequestService) {
+    this.reservation = fb.group({
+      startDate : ['', [Validators.required]],
+      endDate : ['', [Validators.required]],
+      property_id : ['', [Validators.required]]
+    })
+  }
   property : any;
   owner : any;
 
@@ -18,6 +32,7 @@ export class PropertyDetailsComponent implements OnInit{
     this.propertyId = Number(this.route.snapshot.paramMap.get('id'));
     this.service.retrievePropertyById(this.propertyId).subscribe((data)=>{
       this.property = data;
+      this.reservation.patchValue({property_id : this.property.id});
       console.log(this.property);
     })
     this.getPropertyOwner(this.propertyId);
@@ -33,6 +48,15 @@ export class PropertyDetailsComponent implements OnInit{
       this.owner = data;
       console.log(this.owner);
     })
+  }
+
+  onSubmit(){
+    const data = this.reservation.value as Reservation;
+    if(this.reservation.valid){
+      this.request.sendRequest(data).subscribe((response)=>{
+        console.log(response);
+      })
+    }
   }
 
 }

@@ -2,6 +2,7 @@ package com.rent.backend.Controller;
 
 import com.rent.backend.DTO.ReservationDTO;
 import com.rent.backend.Service.ReservationService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,19 +17,16 @@ public class ReservationController {
         this.service = service;
     }
 
-    @PostMapping("/post")
+    @PreAuthorize("hasRole('TENANT')")
+    @PostMapping
     public ReservationDTO addReservation(@RequestBody ReservationDTO dto){
         return service.create(dto);
     }
 
-    @PutMapping("update/{id}")
-    public ReservationDTO updateReservation(@PathVariable Long id, @RequestBody ReservationDTO dto){
-        return service.update(id, dto);
-    }
 
-    @GetMapping("/get")
-    public List<ReservationDTO> getReservations(){
-        return service.getAllReservations();
+    @GetMapping("/{id}")
+    public List<ReservationDTO> getReservations(@PathVariable Long id){
+        return service.getAllPropertyReservations(id);
     }
 
     @DeleteMapping("/delete/{id}")

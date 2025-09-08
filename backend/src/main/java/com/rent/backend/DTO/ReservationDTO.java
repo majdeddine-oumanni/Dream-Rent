@@ -13,6 +13,7 @@ public class ReservationDTO {
     private LocalDate startDate;
     private LocalDate endDate;
     private ReservationStatus reservationStatus;
+    private Long property_id;
 
     public Long getId() {
         return id;
@@ -44,5 +45,13 @@ public class ReservationDTO {
 
     public void setReservationStatus(ReservationStatus reservationStatus) {
         this.reservationStatus = reservationStatus;
+    }
+
+    public Long getProperty_id() {
+        return property_id;
+    }
+
+    public void setProperty_id(Long property_id) {
+        this.property_id = property_id;
     }
 }
