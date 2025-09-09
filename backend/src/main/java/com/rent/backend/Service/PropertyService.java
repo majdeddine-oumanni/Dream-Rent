@@ -127,5 +127,7 @@ public class PropertyService {
         return repository.ownersPropertiesNumber(owner_id);
     }
 
-
+    public Long getAvailablePropertiesNumber(Long owner_id){
+        return repository.availablePropertiesNumber(owner_id);
+    }
 }

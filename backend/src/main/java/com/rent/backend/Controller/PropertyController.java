@@ -73,10 +73,14 @@ public class PropertyController {
         return service.getOwnerByPropertyId(property_id);
     }
 
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/ownersPropertiesNumber/{owner_id}")
     public Long ownersPropertiesNumber(@PathVariable Long owner_id){
         return service.ownersPropertiesNumber(owner_id);
     }
-
-    //@GetMapping("/availableProperties")
+    @PreAuthorize("hasRole('OWNER')")
+    @GetMapping("/availableProperties/{owner_id}")
+    public Long getAvailableProperties(@PathVariable Long owner_id){
+        return service.getAvailablePropertiesNumber(owner_id);
+    }
 }
