@@ -30,7 +30,7 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**").permitAll()
-                .requestMatchers("/reservation/**").permitAll()
+                .requestMatchers("/api/reservation/**").permitAll()
                 //.requestMatchers("/api/property/**").hasAnyRole("ADMIN", "USER", "TENANT")
                 .requestMatchers("/api/properties/**").permitAll()
                 .requestMatchers("/api/reviews/**").hasAnyRole("ADMIN", "TENANT", "OWNER")

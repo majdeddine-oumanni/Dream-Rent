@@ -56,12 +56,13 @@ public class ReservationService {
         return mapper.toDTOs(reservations);
     }
 
-    public void delete(Long id){
-        repository.deleteById(id);
-    }
 
     public Long getReservationsTotal(Long owner_id){
         return repository.getReservationsNumberByOwnerId(owner_id);
+    }
+
+    public Long getReservationsNumberOfProperty(Long property_id){
+        return repository.getReservationsNumberOfProperty(property_id);
     }
 
 }
