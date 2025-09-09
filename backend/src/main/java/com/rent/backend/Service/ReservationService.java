@@ -59,4 +59,9 @@ public class ReservationService {
     public void delete(Long id){
         repository.deleteById(id);
     }
+
+    public Long getReservationsTotal(Long owner_id){
+        return repository.getReservationsNumberByOwnerId(owner_id);
+    }
+
 }

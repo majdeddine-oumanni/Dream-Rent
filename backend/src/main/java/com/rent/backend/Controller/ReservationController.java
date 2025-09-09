@@ -33,4 +33,9 @@ public class ReservationController {
     public void deleteReservation(@PathVariable Long id){
         service.delete(id);
     }
+
+    @GetMapping("/total/{owner_id}")
+    public Long getTotalReservationsByOwnerId(@PathVariable Long owner_id){
+        return service.getReservationsTotal(owner_id);
+    }
 }
