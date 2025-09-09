@@ -3,6 +3,7 @@ package com.rent.backend.Repositories;
 import com.rent.backend.Model.Property;
 import com.rent.backend.Model.PropertyType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -14,4 +15,9 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
     List<Property> findAllByCountry(String country);
 
     List<Property> findAllByPropertyType(PropertyType propertyType);
+
+    @Query(value = "SELECT COUNT(p) FROM Property p WHERE p.owner.id = :owner_id")
+    Long ownersPropertiesNumber(Long owner_id);
+
+
 }

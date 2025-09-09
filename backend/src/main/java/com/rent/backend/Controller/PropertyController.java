@@ -68,8 +68,15 @@ public class PropertyController {
         return service.findPropertiesByPropertyType(type);
     }
 
-    @GetMapping("ownerOfProperty/{property_id}")
+    @GetMapping("/ownerOfProperty/{property_id}")
     public UserDTO getOwnerByPropertyId(@PathVariable Long property_id){
         return service.getOwnerByPropertyId(property_id);
     }
+
+    @GetMapping("/ownersPropertiesNumber/{owner_id}")
+    public Long ownersPropertiesNumber(@PathVariable Long owner_id){
+        return service.ownersPropertiesNumber(owner_id);
+    }
+
+    //@GetMapping("/availableProperties")
 }

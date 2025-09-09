@@ -122,4 +122,10 @@ public class PropertyService {
         User owner = property.getOwner();
         return userMapper.toDTO(owner);
     }
+
+    public Long ownersPropertiesNumber(Long owner_id){
+        return repository.ownersPropertiesNumber(owner_id);
+    }
+
+
 }
