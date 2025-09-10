@@ -47,9 +47,9 @@ public class PropertyController {
         return service.getPropertyById(id);
     }
 
-    @PreAuthorize("hasAnyRole('ADMIN', 'OWNER')")
+    @PreAuthorize("hasRole('OWNER')")
     @GetMapping("/owner/{ownerId}")
-    public List<PropertyDTO> getPropertiesByOwner(@PathVariable("ownerId") Long ownerId) {
+    public List<PropertyDTO> getPropertiesByOwner(@PathVariable Long ownerId) {
         return service.getPropertiesByOwnerId(ownerId);
     }
 
