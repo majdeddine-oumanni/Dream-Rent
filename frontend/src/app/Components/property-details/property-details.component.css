@@ -105,6 +105,15 @@
   padding-bottom: 0.5rem;
 }
 
+.alert {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  color: rgb(0, 193, 0);
+  border-radius: 5px;
+  background: #eafbea;
+}
+
 .property-features {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

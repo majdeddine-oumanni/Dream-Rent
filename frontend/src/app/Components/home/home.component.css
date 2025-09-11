@@ -28,7 +28,9 @@
   max-width: 600px;
   margin: 0 auto;
 }
-
+.cards-container{
+  margin-top: 24px;
+}
 .property-card {
   background: white;
   border-radius: 16px;

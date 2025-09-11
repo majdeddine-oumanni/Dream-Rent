@@ -66,9 +66,9 @@ export class ProfileComponent implements OnInit{
   toggleEditMode() {
     this.editMode = !this.editMode;
     if (this.editMode) {
-      this.updateFrom.enable(); // enable all fields
+      this.updateFrom.enable();
     } else {
-      this.updateFrom.disable(); // disable all fields
+      this.updateFrom.disable();
     }
   }
 

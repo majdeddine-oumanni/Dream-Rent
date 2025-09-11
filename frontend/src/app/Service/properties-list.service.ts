@@ -17,7 +17,8 @@ interface Property{
   guests: number,
   //images: [],
   propertyType: 'APARTMENT' | 'VILLA' | 'HOUSE',
-  avrgReview : number
+  avrgReview : number,
+  features : []
 }
 interface Owner{
   firstName: string,
@@ -32,7 +33,8 @@ interface Owner{
 
 export class PropertiesListService {
 
-  baseUrl : string = "http://localhost:8080/api/properties";
+  private baseUrl : string = "http://localhost:8080/api/properties";
+  private reservatioUrl : string = "http://localhost:8080/api/reservation";
 
   constructor(private http: HttpClient) { }
 
@@ -50,6 +52,26 @@ export class PropertiesListService {
 
   deleteProperty(id : number):Observable<void>{
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  }
+
+  getOwnersPropertiesNumber(ownerId : number):Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/ownersPropertiesNumber/${ownerId}`);
+  }
+
+  getOwnersAvailablePropertiesNumber(ownerId : number):Observable<number>{
+    return this.http.get<number>(`${this.baseUrl}/availableProperties/${ownerId}`);
+  }
+
+  getReservationsNumberByOwner(ownerId : number): Observable<number>{
+    return this.http.get<number>(`${this.reservatioUrl}/total/${ownerId}`);
+  }
+
+  getOwnerProperties(ownerId : number): Observable<Property[]>{
+    return this.http.get<Property[]>(`${this.baseUrl}/owner/${ownerId}`);
+  }
+
+  propertiesReservationNumber(propertyId : number): Observable<number>{
+    return this.http.get<number>(`${this.reservatioUrl}/totalByProperty/${propertyId}`);
   }
 
 }

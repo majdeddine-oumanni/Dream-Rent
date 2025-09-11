@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="page-header">
+      <div class="header-info">
+          <h1 class="page-title">My Properties</h1>
+          <p class="page-subtitle">Manage your rental properties and track performance</p>
+      </div>
+      <div class="header-actions">
+          <a href="#" class="btn btn-primary"><i class="bi bi-house-add-fill"></i> Add Property</a>
+      </div>
+  </div>
+
+  <div class="stats-overview">
+      <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-houses"></i></div>
+          <div class="stat-number">{{propertiesNumber}}</div>
+          <div class="stat-label">Total Properties</div>
+      </div>
+      <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-building-check"></i></div>
+          <div class="stat-number">{{availableProperties}}</div>
+          <div class="stat-label">Available</div>
+      </div>
+      <div class="stat-card">
+          <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+          <div class="stat-number">{{totalReservations}}</div>
+          <div class="stat-label">Total Reservations</div>
+      </div>
+  </div>
+
+  <div class="properties-grid">
+      @for (property of propertiesList; track $index) {
+        <div class="property-card">
+          <div class="property-image">
+            <span class="property-status status-active">
+              {{property.availability ? "available" : "unavailable"}}
+            </span>
+            {{property.title}}
+          </div>
+          <div class="property-content">
+            <h3 class="property-title">{{property.title}}</h3>
+            <p class="property-location"><i class="bi bi-geo-fill"></i> {{property.country}}, {{property.city}} </p>
+
+            <button class="reservations-button">
+              <span class="reservations-badge"> {{propertyReservations[property.id]}} </span> Reservations
+            </button>
+
+            <div class="property-details">
+              <div class="detail-item">
+                <div class="detail-icon"><i class="fas fa-bed"></i></div>
+                <div class="detail-value">{{property.roomsNumber}}</div>
+                <div class="detail-label">Bedrooms</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-icon"><i class="fas fa-bath"></i></div>
+                <div class="detail-value">{{property.bathroomsNumber}}</div>
+                <div class="detail-label">Bathrooms</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-icon"><i class="bi bi-bounding-box"></i></div>
+                <div class="detail-value">{{property.area}}</div>
+                <div class="detail-label">m²</div>
+              </div>
+            </div>
+
+            <div class="property-price">MAD {{property.price}}/night</div>
+
+            <div class="property-actions">
+              <button class="btn btn-edit btn-small"><i class="bi bi-pencil-square"></i> Edit</button>
+              <button class="btn btn-view btn-small" [routerLink]="[`/detail/${property.id}`]"><i class="bi bi-eye"></i> View</button>
+              <button class="btn btn-delete btn-small" (click)="deleteProperty(property.id)" ><i class="bi bi-trash3"></i> Delete</button>
+            </div>
+          </div>
+        </div>
+      }
+  </div>
+</div>

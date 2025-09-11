@@ -111,6 +111,11 @@
 
           <!-- Auth Buttons -->
           <div class="auth-buttons">
+              @if (service.isOwner()) {
+                <a [routerLink]="['/owners_properties']" class="btn btn-auth btn-login">
+                  <i class="bi bi-houses"></i> My-properties
+                </a>
+              }
               @if (service.isAdmin()) {
                 <a [routerLink]="['/users_list']" class="btn btn-auth btn-login">
                   <i class="bi bi-people-fill"></i> users-list

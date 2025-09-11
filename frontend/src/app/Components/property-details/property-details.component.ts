@@ -1,8 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, inject, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { PropertiesListService } from '../../Service/properties-list.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RequestService } from '../../Service/request.service';
+import { AuthService } from '../../Service/auth.service';
+
+interface Property{
+  id: number,
+  title: string,
+  description: string,
+  country: string,
+  city: string,
+  roomsNumber: number,
+  area: number,
+  bathroomsNumber: number,
+  availability: boolean,
+  price: number,
+  guests: number,
+  //images: [],
+  propertyType: 'APARTMENT' | 'VILLA' | 'HOUSE',
+  avrgReview : number,
+  features : []
+}
 
 interface Reservation{
   startDate: string,
@@ -16,16 +35,17 @@ interface Reservation{
   styleUrl: './property-details.component.css'
 })
 export class PropertyDetailsComponent implements OnInit{
+  router = inject(Router);
   propertyId !: number;
   reservation !: FormGroup;
-  constructor(private route : ActivatedRoute, private service : PropertiesListService, private fb : FormBuilder, private request : RequestService) {
+  constructor(private route : ActivatedRoute, private service : PropertiesListService, private fb : FormBuilder, private request : RequestService, private authService : AuthService) {
     this.reservation = fb.group({
       startDate : ['', [Validators.required]],
       endDate : ['', [Validators.required]],
       property_id : ['', [Validators.required]]
     })
   }
-  property : any;
+  property !: Property;
   owner : any;
 
   ngOnInit(): void {
@@ -51,12 +71,18 @@ export class PropertyDetailsComponent implements OnInit{
   }
 
   onSubmit(){
-    const data = this.reservation.value as Reservation;
-    if(this.reservation.valid){
-      this.request.sendRequest(data).subscribe((response)=>{
-        console.log(response);
-      })
+    if(this.authService.isLoggedIn()){
+      const data = this.reservation.value as Reservation;
+      if(this.reservation.valid){
+        this.clickedReservation = !this.clickedReservation;
+        this.request.sendRequest(data).subscribe((response)=>{
+          console.log(response);
+        })
+      }
+    }else{
+      this.router.navigate(['/login']);
     }
   }
 
+  clickedReservation : boolean = false;
 }

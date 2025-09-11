@@ -7,10 +7,16 @@ import { ProfileComponent } from './Components/profile/profile.component';
 import { UserListComponent } from './Components/user-list/user-list.component';
 import { UpdateUserComponent } from './Components/update-user/update-user.component';
 import { authGuard } from './Guard/auth.guard';
+import { OwnersPropertiesComponent } from './Components/owners-properties/owners-properties.component';
 
 export const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "detail/:id", component: PropertyDetailsComponent},
+
+  {
+    path: "owners_properties",
+    component: OwnersPropertiesComponent
+  },
 
   {
     path : "users_list",

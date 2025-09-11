@@ -43,21 +43,21 @@
             <h2 class="section-title"> {{property.title}} </h2>
             <div class="property-features">
                 <div class="feature-item">
-                    <div class="feature-icon">🏠</div>
+                    <div class="feature-icon"><i class="bi bi-house-door-fill"></i></div>
                     <div>
                         <strong>Property Type</strong><br>
                         {{property.propertyType.toLowerCase()}}
                     </div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">📐</div>
+                    <div class="feature-icon"><i class="bi bi-bounding-box"></i></div>
                     <div>
                         <strong>Area</strong><br>
                         {{property.area}} m²
                     </div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">🛏️</div>
+                    <div class="feature-icon"><i class="fas fa-bed"></i></div>
                     <div>
                         <strong>Bedrooms</strong><br>
                         {{property.roomsNumber}}
@@ -69,10 +69,16 @@
                     </div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-icon">🚿</div>
+                    <div class="feature-icon"><i class="fas fa-bath"></i></div>
                     <div>
                         <strong>Bathrooms</strong><br>
-                        {{property.bathroomsNumber}} Full Bathrooms
+                        {{property.bathroomsNumber}}
+                        @if(property.bathroomsNumber > 1){
+                          Full Bathrooms
+                        }
+                        @if(property.bathroomsNumber === 1){
+                          Full Bathroom
+                        }
                     </div>
                 </div>
             </div>
@@ -86,7 +92,7 @@
             <div class="amenities-grid">
               @for (item of property.features; track $index) {
                 <div class="amenity-item">
-                  <div class="amenity-check">✓</div>
+                  <div class="amenity-check"><i class="bi bi-check2"></i></div>
                   <span> {{item}} </span>
                 </div>
               }
@@ -109,29 +115,33 @@
                     </div>
                   </div>
 
-                <button class="book-now-btn" type="submit">Schedule Viewing</button>
+                  @if (clickedReservation) {
+                    <div class="alert">
+                      <i class="bi bi-calendar2-check"></i> Reservation sent successfully!
+                    </div>
+                  }@else{
+                    <button class="book-now-btn" type="submit">Schedule Viewing</button>
+                  }
             </form>
 
             <div class="contact-info">
                 <h3 class="section-title">Contact Agent</h3>
                 <div class="contact-item">
-                    <div class="contact-icon">👤</div>
+                    <div class="contact-icon"><i class="bi bi-person-vcard"></i></div>
                     <div>
                         <strong> {{owner.firstName}} {{owner.lastName}} </strong><br>
                         Real Estate Agent
                     </div>
                 </div>
-                @if (owner.phone !== null) {
-                  <div class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <div>
-                        <strong>Phone</strong><br>
-                        {{owner.phone}}
-                    </div>
-                  </div>
-                }
                 <div class="contact-item">
-                    <div class="contact-icon">✉️</div>
+                  <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+                  <div>
+                      <strong>Phone</strong><br>
+                      {{owner.phone}}
+                  </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="bi bi-envelope-at"></i></div>
                     <div>
                         <strong>Email</strong><br>
                         {{owner.email}}
