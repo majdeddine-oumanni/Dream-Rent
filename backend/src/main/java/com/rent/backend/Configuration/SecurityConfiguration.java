@@ -29,6 +29,10 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
+                .requestMatchers(
+                        "/swagger-ui/**",
+                        "/v3/api-docs/**"
+                ).permitAll()
                 .requestMatchers("/api/v1/auth/**").permitAll()
                 .requestMatchers("/api/reservation/**").permitAll()
                 //.requestMatchers("/api/property/**").hasAnyRole("ADMIN", "USER", "TENANT")

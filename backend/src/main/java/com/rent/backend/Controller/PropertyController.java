@@ -19,7 +19,7 @@ public class PropertyController {
         this.service = service;
     }
 
-    @PreAuthorize("hasAnyRole('OWNER', 'ADMIN')")
+    @PreAuthorize("hasRole('OWNER')")
     @PostMapping
     public PropertyDTO createProperty(@RequestBody PropertyDTO dto) {
         return service.create(dto);

@@ -4,7 +4,6 @@ import com.rent.backend.DTO.ReservationDTO;
 import com.rent.backend.Model.ReservationStatus;
 import com.rent.backend.Service.ReservationService;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
