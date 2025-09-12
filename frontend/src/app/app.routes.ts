@@ -8,14 +8,24 @@ import { UserListComponent } from './Components/user-list/user-list.component';
 import { UpdateUserComponent } from './Components/update-user/update-user.component';
 import { authGuard } from './Guard/auth.guard';
 import { OwnersPropertiesComponent } from './Components/owners-properties/owners-properties.component';
+import { PropertyFormComponent } from './Components/property-form/property-form.component';
 
 export const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "detail/:id", component: PropertyDetailsComponent},
 
   {
+    path: "property_form",
+    component: PropertyFormComponent,
+    canActivate: [authGuard],
+    data: {roles : ["OWNER"]}
+  },
+
+  {
     path: "owners_properties",
-    component: OwnersPropertiesComponent
+    component: OwnersPropertiesComponent,
+    canActivate: [authGuard],
+    data : {roles : ["OWNER"]}
   },
 
   {

@@ -1,0 +1,229 @@
+<div class="container">
+  <a href="#" class="back-button"><i class="bi bi-arrow-left"></i> Back to My Properties</a>
+
+  <div class="form-header">
+      <h1 class="form-title">Add New Property</h1>
+      <p class="form-subtitle">Fill in the details to list your property</p>
+  </div>
+
+  <div class="property-form">
+    @if (submitted) {
+      <div class="success-message">
+        <i class="bi bi-check2-square"></i> Property added successfully!
+      </div>
+    }
+
+    <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+        <h2 class="section-title">
+            <i class="bi bi-card-text"></i> Basic Information
+        </h2>
+
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label class="form-label">
+              Property Title <span class="required">*</span>
+            </label>
+            <input type="text" class="form-input" placeholder="Enter property title" formControlName="title">
+            <div class="form-help">Give your property an attractive and descriptive title</div>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="form-label">
+              Description <span class="required">*</span>
+            </label>
+            <textarea class="form-textarea" placeholder="Describe your property in detail..." formControlName="description" ></textarea>
+            <div class="form-help">Provide a detailed description highlighting key features and amenities</div>
+          </div>
+        </div>
+
+        <h2 class="section-title">
+            <i class="bi bi-geo-alt"></i> Location Details
+        </h2>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">
+                    Country <span class="required">*</span>
+                </label>
+                <input type="text" class="form-input" placeholder="Enter country name" formControlName="country">
+                <div class="form-help">Type the country where your property is located</div>
+            </div>
+
+          <div class="form-group">
+            <label class="form-label">
+              City <span class="required">*</span>
+            </label>
+            <input type="text" class="form-input" placeholder="Enter city name" formControlName="city">
+            <div class="form-help">Enter the city or area name</div>
+          </div>
+        </div>
+
+        <h2 class="section-title">
+          <i class="bi bi-house-exclamation-fill"></i> Property Type
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label">
+            Property Type <span class="required">*</span>
+          </label>
+          <div class="property-type-grid">
+              <div class="type-option selected">
+                  <input type="radio" name="propertyType" value="APARTMENT" class="type-radio" checked formControlName="propertyType">
+                  <div class="type-info">
+                      <div class="type-name">Apartment</div>
+                      <div class="type-description">Modern apartment in building</div>
+                  </div>
+              </div>
+              <div class="type-option">
+                  <input type="radio" name="propertyType" value="VILLA" class="type-radio" formControlName="propertyType">
+                  <div class="type-info">
+                      <div class="type-name">Villa</div>
+                      <div class="type-description">Luxury standalone villa</div>
+                  </div>
+              </div>
+              <div class="type-option">
+                  <input type="radio" name="propertyType" value="HOUSE" class="type-radio" formControlName="propertyType">
+                  <div class="type-info">
+                      <div class="type-name">House</div>
+                      <div class="type-description">Traditional family house</div>
+                  </div>
+              </div>
+              <div class="type-option">
+                  <input type="radio" name="propertyType" value="RIAD" class="type-radio" formControlName="propertyType">
+                  <div class="type-info">
+                      <div class="type-name">Riad</div>
+                      <div class="type-description">Traditional Moroccan house</div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+        <h2 class="section-title">
+          <i class="bi bi-ticket-detailed"></i> Property Details
+        </h2>
+
+        <div class="form-grid-3">
+            <div class="form-group">
+                <label class="form-label">
+                    Number of Rooms <span class="required">*</span>
+                </label>
+                <input type="number" class="form-input" placeholder="0" formControlName="roomsNumber">
+                <div class="form-help">Total number of rooms</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Number of Bathrooms <span class="required">*</span>
+                </label>
+                <input type="number" class="form-input" placeholder="0" formControlName="bathroomsNumber">
+                <div class="form-help">Total number of bathrooms</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Maximum Guests <span class="required">*</span>
+                </label>
+                <input type="number" class="form-input" placeholder="0" formControlName="guests">
+                <div class="form-help">Maximum number of guests</div>
+            </div>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label class="form-label">
+                    Area m² <span class="required">*</span>
+                </label>
+                <input type="number" class="form-input" placeholder="0" formControlName="area">
+                <div class="form-help">Property area in square meter</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    Daily Price (MAD) <span class="required">*</span>
+                </label>
+                <input type="number" class="form-input" placeholder="0.00" formControlName="price">
+                <div class="form-help">Daily rental price in Derham</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">
+          <i class="bi bi-camera-fill"></i> Property Images
+        </h2>
+
+        <div class="form-group">
+            <label class="form-label">Upload Images</label>
+            <div class="image-upload-area">
+                <div class="upload-icon"><i class="bi bi-camera"></i></div>
+                <div class="upload-text">Click to upload images</div>
+                <div class="upload-hint">Support: JPG, PNG, WebP (Max: 10MB each)</div>
+                <input type="file"  style="display: none;">
+            </div>
+            <div class="form-help">Upload high-quality images to showcase your property</div>
+        </div>
+
+        <h2 class="section-title">
+          <i class="bi bi-star-fill"></i> Features & Amenities
+        </h2>
+
+        <div class="features-section">
+            <label class="form-label">Select Available Features</label>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="wifi" value="wifi" (change)="onCheckboxChange($event)">
+                    <label for="wifi" class="feature-label" >WiFi Internet</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="parking" value="parking" (change)="onCheckboxChange($event)">
+                    <label for="parking" class="feature-label" >Parking</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="pool" value="Swimming pool" (change)="onCheckboxChange($event)">
+                    <label for="pool" class="feature-label" >Swimming Pool</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="gym" value="gym" (change)="onCheckboxChange($event)">
+                    <label for="gym" class="feature-label" >Gym/Fitness</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="balcony" value="balcony" (change)="onCheckboxChange($event)">
+                    <label for="balcony" class="feature-label" >Balcony</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="garden" value="garden" (change)="onCheckboxChange($event)">
+                    <label for="garden" class="feature-label" >Garden</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="ac" value="Air Conditioning" (change)="onCheckboxChange($event)">
+                    <label for="ac" class="feature-label" >Air Conditioning</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="heating" value="heating" (change)="onCheckboxChange($event)">
+                    <label for="heating" class="feature-label" >Heating</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="kitchen" value="kitchen" (change)="onCheckboxChange($event)">
+                    <label for="kitchen" class="feature-label" >Full Kitchen</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="laundry" value="laundry" (change)="onCheckboxChange($event)">
+                    <label for="laundry" class="feature-label" >Laundry</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="security" value="security" (change)="onCheckboxChange($event)">
+                    <label for="security" class="feature-label" >Security System</label>
+                </div>
+                <div class="feature-item">
+                    <input type="checkbox" class="feature-checkbox" id="maids" value="maids" (change)="onCheckboxChange($event)">
+                    <label for="maids" class="feature-label" >Maids</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-house-add-fill"></i> Save Property
+            </button>
+        </div>
+    </form>
+  </div>
+</div>

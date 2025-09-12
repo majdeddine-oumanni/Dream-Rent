@@ -20,6 +20,23 @@ interface Property{
   avrgReview : number,
   features : []
 }
+interface PropertyPost{
+  //id: number,
+  title: string,
+  description: string,
+  country: string,
+  city: string,
+  roomsNumber: number,
+  area: number,
+  bathroomsNumber: number,
+  availability: boolean,
+  price: number,
+  guests: number,
+  //images: [],
+  propertyType: 'APARTMENT' | 'VILLA' | 'HOUSE',
+  avrgReview : number,
+  features : []
+}
 interface Owner{
   firstName: string,
   lastName: string,
@@ -72,6 +89,10 @@ export class PropertiesListService {
 
   propertiesReservationNumber(propertyId : number): Observable<number>{
     return this.http.get<number>(`${this.reservatioUrl}/totalByProperty/${propertyId}`);
+  }
+
+  postProperty(property : Property):Observable<Property>{
+    return this.http.post<Property>(`${this.baseUrl}`, property);
   }
 
 }

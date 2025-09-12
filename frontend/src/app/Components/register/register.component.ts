@@ -33,19 +33,18 @@ export class RegisterComponent implements OnInit{
         country : ['', [Validators.required]]
       })
   }
-  // Helper method to check if a field has errors and should show them
+
   isFieldInvalid(fieldName: string): boolean {
     const field = this.registrationForm.get(fieldName);
     return !!(field && field.invalid && (field.dirty || field.touched));
   }
 
-  // Helper method to check if a field is valid and should show success state
+
   isFieldValid(fieldName: string): boolean {
     const field = this.registrationForm.get(fieldName);
     return !!(field && field.valid && (field.dirty || field.touched));
   }
 
-  // Helper method to get specific error for a field
   getFieldError(fieldName: string, errorType: string): boolean {
     const field = this.registrationForm.get(fieldName);
     return !!(field && field.errors && field.errors[errorType]);
@@ -55,7 +54,6 @@ export class RegisterComponent implements OnInit{
     if(this.registrationForm.valid){
       this.isSubmitted = true;
 
-      // Mark all fields as touched to show any remaining validation errors
       this.markFormGroupTouched();
       const payload = this.registrationForm.value as User;
 
@@ -65,12 +63,10 @@ export class RegisterComponent implements OnInit{
         })
         console.log('Form submitted:', this.registrationForm.value);
 
-        // Success feedback
         alert("Registration successful!");
 
-        // Reset form after successful submission
         this.registrationForm.reset();
-        this.registrationForm.patchValue({ role: '' }); // Reset role to empty
+        this.registrationForm.patchValue({ role: '' });
 
       } catch (error) {
         console.error('Registration error:', error);
@@ -79,13 +75,11 @@ export class RegisterComponent implements OnInit{
         this.isSubmitted = false;
       }
     } else {
-      // Mark all fields as touched to show validation errors
       this.markFormGroupTouched();
       console.log("Form is invalid");
     }
   }
 
-    // Helper method to mark all form fields as touched
   private markFormGroupTouched(): void {
     Object.keys(this.registrationForm.controls).forEach(key => {
       const control = this.registrationForm.get(key);
@@ -95,7 +89,6 @@ export class RegisterComponent implements OnInit{
     });
   }
 
-  // Method to reset form
   resetForm(): void {
     this.registrationForm.reset();
     this.registrationForm.patchValue({ role: '' });
