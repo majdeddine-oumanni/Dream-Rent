@@ -15,7 +15,7 @@ interface Property{
   price: number,
   guests: number,
   //images: [],
-  propertyType: 'APARTMENT' | 'VILLA' | 'HOUSE' | 'RIAD',
+  propertyType: string,
   features : []
 }
 
@@ -41,7 +41,8 @@ export class PropertyFormComponent {
       price: [0, [Validators.required]],
       guests: [0, [Validators.required, Validators.max(50), Validators.min(1)]],
       area: [0, [Validators.required, Validators.min(3)]],
-      features: this.fb.array([])
+      features: this.fb.array([]),
+      availability : true
     })
   }
 

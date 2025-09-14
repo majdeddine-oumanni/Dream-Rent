@@ -66,100 +66,112 @@ a{
 }
 
 .form-control, .form-select {
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
-    background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: white;
 }
 
-.form-control:focus, .form-select:focus {
-    border-color: var(--airbnb-red);
-    box-shadow: 0 0 0 0.2rem rgba(56, 238, 255, 0.1);
-    outline: none;
+.single-form-control{
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: white;
+  width: 200%;
+}
+
+
+
+.form-control:focus , .single-form-control:focus, .form-select:focus{
+  border-color: var(--airbnb-red);
+  box-shadow: 0 0 0 0.2rem rgba(56, 238, 255, 0.1);
+  outline: none;
 }
 
 .form-control::placeholder {
-    color: #aaa;
+  color: #aaa;
 }
 
 .btn-register {
-    background: linear-gradient(135deg, #00c5c5 0%, #00aeae 100%);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-weight: 600;
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
-    width: 100%;
-    transition: all 0.3s ease;
-    text-transform: none;
+  background: linear-gradient(135deg, #00c5c5 0%, #00aeae 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  text-transform: none;
 }
 
 .btn-register:hover{
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(56, 222, 255, 0.3);
-    color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(56, 222, 255, 0.3);
+  color: white;
 }
 
 .users-list-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    border-radius: 25px;
-    padding: 0.5rem 1.5rem;
-    color: var(--airbnb-dark);
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  color: var(--airbnb-dark);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .users-list-btn:hover {
-    background: white;
-    color: var(--airbnb-red);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: white;
+  color: var(--airbnb-red);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .required {
-    color: var(--airbnb-red);
+  color: var(--airbnb-red);
 }
 
 @media (max-width: 576px) {
-    .registration-container {
-        margin: 1rem auto;
-    }
+  .registration-container {
+    margin: 1rem auto;
+  }
 
-    .card-header {
-        padding: 1.5rem 1.5rem 1rem;
-    }
+  .card-header {
+    padding: 1.5rem 1.5rem 1rem;
+  }
 
-    .card-body {
-        padding: 1rem 1.5rem 1.5rem;
-    }
+  .card-body {
+    padding: 1rem 1.5rem 1.5rem;
+  }
 }
 .btn-login-redirect {
-    background: transparent;
-    border: 2px solid #008080;
-    border-radius: 8px;
-    color: #008080;
-    font-weight: 600;
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
-    width: 100%;
-    transition: all 0.3s ease;
-    text-transform: none;
+  background: transparent;
+  border: 2px solid #008080;
+  border-radius: 8px;
+  color: #008080;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  width: 100%;
+  transition: all 0.3s ease;
+  text-transform: none;
 }
 
 .btn-login-redirect:hover {
-    background-color: #008080;
-    color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(56, 248, 255, 0.3);
+  background-color: #008080;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(56, 248, 255, 0.3);
 }
 #quest{
   color: var(--airbnb-gray);

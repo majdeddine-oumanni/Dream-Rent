@@ -43,6 +43,7 @@ export class PropertyUpdateComponent implements OnInit{
       price: [0, [Validators.required]],
       guests: [0, [Validators.required, Validators.max(50), Validators.min(1)]],
       area: [0, [Validators.required, Validators.min(3)]],
+      availability: true,
       features: this.fb.array([])
     })
   }
