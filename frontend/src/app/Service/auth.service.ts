@@ -27,7 +27,13 @@ export class AuthService {
   private baseUrl = "http://localhost:8080/api/v1/auth"
 
   public register(user: Payload):Observable<Payload>{
-    return this.http.post<Payload>(`${this.baseUrl}/register`, user);
+    return this.http.post<Payload>(`${this.baseUrl}/register`, user).pipe(
+      tap((response: any) => {
+        if (response.token) {
+          this.setAuthData(response.token);
+        }
+      })
+    );
   }
 
 

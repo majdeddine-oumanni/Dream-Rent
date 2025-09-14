@@ -8,7 +8,8 @@ interface requiredData{
   lastName : string,
   email: string,
   country: string,
-  phone : string
+  phone : string,
+  role : ''
 }
 @Component({
   selector: 'app-profile',
@@ -26,7 +27,8 @@ export class ProfileComponent implements OnInit{
       lastName : ['', [Validators.required, Validators.minLength(3)]],
       email : ['', [Validators.required, Validators.email]],
       country : ['', [Validators.required]],
-      phone: ['']
+      phone: [''],
+      role : ['']
     })
     this.updateFrom.disable();
   }
@@ -56,7 +58,8 @@ export class ProfileComponent implements OnInit{
         lastName: this.user.lastName,
         email: this.user.email,
         country: this.user.country,
-        phone: this.user.phone
+        phone: this.user.phone,
+        role : this.user.role
       })
     }
   }
@@ -81,7 +84,8 @@ export class ProfileComponent implements OnInit{
       lastName: this.user.lastName,
       email: this.user.email,
       country: this.user.country,
-      phone: this.user.phone
+      phone: this.user.phone,
+      role: this.user.role
     });
   }
 
