@@ -4,6 +4,7 @@ import { PropertiesListService } from '../../Service/properties-list.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RequestService } from '../../Service/request.service';
 import { AuthService } from '../../Service/auth.service';
+import { ReviewsService } from '../../Service/reviews.service';
 
 interface Property{
   id: number,
@@ -28,6 +29,12 @@ interface Reservation{
   endDate: string,
   property_id : number
 }
+
+interface Review{
+  id: number,
+  review: number,
+  comment: string
+}
 @Component({
   selector: 'app-property-details',
   imports: [ReactiveFormsModule],
@@ -38,7 +45,7 @@ export class PropertyDetailsComponent implements OnInit{
   router = inject(Router);
   propertyId !: number;
   reservation !: FormGroup;
-  constructor(private route : ActivatedRoute, private service : PropertiesListService, private fb : FormBuilder, private request : RequestService, private authService : AuthService) {
+  constructor(private route : ActivatedRoute, private service : PropertiesListService, private fb : FormBuilder, private request : RequestService, private authService : AuthService, private reviewService: ReviewsService) {
     this.reservation = fb.group({
       startDate : ['', [Validators.required]],
       endDate : ['', [Validators.required]],
@@ -47,6 +54,7 @@ export class PropertyDetailsComponent implements OnInit{
   }
   property !: Property;
   owner : any;
+  reviewsList !: Review[];
 
   ngOnInit(): void {
     this.propertyId = Number(this.route.snapshot.paramMap.get('id'));
@@ -56,6 +64,14 @@ export class PropertyDetailsComponent implements OnInit{
       console.log(this.property);
     })
     this.getPropertyOwner(this.propertyId);
+    this.getReviewsList(this.propertyId);
+  }
+
+  getReviewsList(propertyId : number){
+    this.reviewService.getPropertyReviews(propertyId).subscribe((reviews)=>{
+      this.reviewsList = reviews;
+      console.log(this.reviewsList);
+    })
   }
 
   //used for converting number of review to an array

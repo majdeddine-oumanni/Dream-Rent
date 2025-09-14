@@ -3,6 +3,7 @@ package com.rent.backend.Controller;
 
 import com.rent.backend.DTO.ReviewsDTO;
 import com.rent.backend.Service.ReviewsService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,8 @@ public class ReviewController {
     public ReviewController(ReviewsService service) {
         this.service = service;
     }
+
+    @PreAuthorize("hasRole('TENANT')")
     @PostMapping("/{property_id}")
     public ReviewsDTO postReview(@PathVariable Long property_id, @RequestBody ReviewsDTO dto){
         return service.makeReview(property_id, dto);
