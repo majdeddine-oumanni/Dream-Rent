@@ -95,4 +95,8 @@ export class PropertiesListService {
     return this.http.post<Property>(`${this.baseUrl}`, property);
   }
 
+  updateProperty(propertId : number, property: Property): Observable<Property>{
+    return this.http.put<Property>(`${this.baseUrl}/${propertId}`, property);
+  }
+
 }

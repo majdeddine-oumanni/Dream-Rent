@@ -9,10 +9,18 @@ import { UpdateUserComponent } from './Components/update-user/update-user.compon
 import { authGuard } from './Guard/auth.guard';
 import { OwnersPropertiesComponent } from './Components/owners-properties/owners-properties.component';
 import { PropertyFormComponent } from './Components/property-form/property-form.component';
+import { PropertyUpdateComponent } from './Components/property-update/property-update.component';
 
 export const routes: Routes = [
   {path: "", component: HomeComponent},
   {path: "detail/:id", component: PropertyDetailsComponent},
+
+  {
+    path: "update_property/:id",
+    component : PropertyUpdateComponent,
+    canActivate: [authGuard],
+    data: {roles : ['OWNER']}
+  },
 
   {
     path: "property_form",

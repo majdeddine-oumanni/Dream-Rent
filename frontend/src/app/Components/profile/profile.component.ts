@@ -99,6 +99,4 @@ export class ProfileComponent implements OnInit{
   logout(){
     this.service.logout();
   }
-
-
 }

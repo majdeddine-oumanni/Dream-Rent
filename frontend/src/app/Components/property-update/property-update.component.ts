@@ -1,7 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { PropertiesListService } from '../../Service/properties-list.service';
+import { ActivatedRoute } from '@angular/router';
+
+interface Property{
+  id: number,
+  title: string,
+  description: string,
+  country: string,
+  city: string,
+  roomsNumber: number,
+  area: number,
+  bathroomsNumber: number,
+  availability: boolean,
+  price: number,
+  guests: number,
+  //images: [],
+  propertyType: 'APARTMENT' | 'VILLA' | 'HOUSE',
+  avrgReview : number,
+  features : []
+}
 
 @Component({
   selector: 'app-property-update',
@@ -9,10 +28,10 @@ import { PropertiesListService } from '../../Service/properties-list.service';
   templateUrl: './property-update.component.html',
   styleUrl: './property-update.component.css'
 })
-export class PropertyUpdateComponent {
-    propertyForm !: FormGroup;
+export class PropertyUpdateComponent implements OnInit{
+  propertyForm !: FormGroup;
 
-  constructor(private fb: FormBuilder, private service : PropertiesListService) {
+  constructor(private fb: FormBuilder, private service : PropertiesListService, private route: ActivatedRoute) {
     this.propertyForm = fb.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -28,11 +47,36 @@ export class PropertyUpdateComponent {
     })
   }
 
+  propertyId !: number;
+  property !: Property;
+  ngOnInit(): void {
+    this.propertyId = Number(this.route.snapshot.paramMap.get('id'));
+    this.service.retrievePropertyById(this.propertyId).subscribe((data)=>{
+      this.property = data;
+      console.log(this.property);
+      if(this.property){
+        this.propertyForm.patchValue({
+          title : this.property.title,
+          description: this.property.description,
+          country: this.property.country,
+          city : this.property.city,
+          propertyType : this.property.propertyType,
+          roomsNumber : this.property.roomsNumber,
+          bathroomsNumber : this.property.bathroomsNumber,
+          price: this.property.price,
+          guests : this.property.guests,
+          area : this.property.area
+        })
+      }
+    })
+
+  }
+
   submitted : boolean = false;
   onSubmit(){
     if(this.propertyForm.valid){
       const property = this.propertyForm.value;
-      this.service.postProperty(property).subscribe({
+      this.service.updateProperty(this.property.id, property).subscribe({
         next: (response)=>{
           this.submitted = true;
         }
