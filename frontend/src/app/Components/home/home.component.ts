@@ -60,4 +60,11 @@ export class HomeComponent implements OnInit{
     })
   }
 
+  getPropertyByPrice(price1: number, price2: number){
+    this.filterService.getPropertiesByPrice(price1, price2).subscribe((data)=>{
+      this.properties = data;
+    })
+  }
+
+
 }

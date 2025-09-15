@@ -23,10 +23,14 @@ interface Property{
   providedIn: 'root'
 })
 export class FilteringService {
+  private url = "http://localhost:8080/api/properties/search";
 
   constructor(private http: HttpClient) { }
 
   getPropertiesByType(type: string):Observable<Property[]>{
-    return this.http.get<Property[]>(`http://localhost:8080/api/properties/search/type?type=${type}`)
+    return this.http.get<Property[]>(`${this.url}/type?type=${type}`);
+  }
+  getPropertiesByPrice(price1: number, price2:number):Observable<Property[]>{
+    return this.http.get<Property[]>(`${this.url}/price?price1=${price1}&price2=${price2}`);
   }
 }

@@ -14,9 +14,9 @@
                     <button class="btn filter-btn" (click)="getPropertyByType('HOUSE')">Houses</button>
                     <button class="btn filter-btn" (click)="getPropertyByType('VILLA')">Villas</button>
                     <button class="btn filter-btn" (click)="getPropertyByType('RIAD')">Riads</button>
-                    <button class="btn filter-btn">0 - 100 MAD</button>
-                    <button class="btn filter-btn">100 - 200 MAD</button>
-                    <button class="btn filter-btn">200+ MAD</button>
+                    <button class="btn filter-btn" (click)="getPropertyByPrice(0, 100)">0 - 100 MAD</button>
+                    <button class="btn filter-btn" (click)="getPropertyByPrice(100, 200)">100 - 200 MAD</button>
+                    <button class="btn filter-btn" (click)="getPropertyByPrice(200, 100000)">200+ MAD</button>
                 </div>
             </div>
         </div>
