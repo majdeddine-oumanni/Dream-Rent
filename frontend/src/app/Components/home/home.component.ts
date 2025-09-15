@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from "@angular/router";
 import { PropertiesListService } from '../../Service/properties-list.service';
 import { AuthService } from '../../Service/auth.service';
+import { FilteringService } from '../../Service/filtering.service';
 
 interface Property{
   id: number,
@@ -27,10 +28,14 @@ interface Property{
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
-  constructor(private service : PropertiesListService, public authService: AuthService) {}
+  constructor(private service : PropertiesListService, public authService: AuthService, private filterService: FilteringService) {}
 
   properties !: Property[];
   ngOnInit(): void {
+    this.getAllProperties();
+  }
+
+  getAllProperties(){
     this.service.retrieveAllProperties().subscribe((data)=>{
       this.properties = data;
       console.log(this.properties);
@@ -47,6 +52,12 @@ export class HomeComponent implements OnInit{
       this.properties =  this.properties.filter(propertie => propertie.id != id);
       })
     }
+  }
+
+  getPropertyByType(type: string){
+    this.filterService.getPropertiesByType(type).subscribe((data)=>{
+      this.properties = data;
+    })
   }
 
 }

@@ -9,14 +9,14 @@
             <div class="filters-section">
                 <h6 class="filter-title">Filter by:</h6>
                 <div class="filter-options">
-                    <button class="btn filter-btn active">All Properties</button>
-                    <button class="btn filter-btn">Apartments</button>
-                    <button class="btn filter-btn">Houses</button>
-                    <button class="btn filter-btn">Villas</button>
-                    <button class="btn filter-btn">Studios</button>
-                    <button class="btn filter-btn">$0 - $100</button>
-                    <button class="btn filter-btn">$100 - $200</button>
-                    <button class="btn filter-btn">$200+</button>
+                    <button class="btn filter-btn active" (click)="getAllProperties()">All Properties</button>
+                    <button class="btn filter-btn" (click)="getPropertyByType('APARTMENT')">Apartments</button>
+                    <button class="btn filter-btn" (click)="getPropertyByType('HOUSE')">Houses</button>
+                    <button class="btn filter-btn" (click)="getPropertyByType('VILLA')">Villas</button>
+                    <button class="btn filter-btn" (click)="getPropertyByType('RIAD')">Riads</button>
+                    <button class="btn filter-btn">0 - 100 MAD</button>
+                    <button class="btn filter-btn">100 - 200 MAD</button>
+                    <button class="btn filter-btn">200+ MAD</button>
                 </div>
             </div>
         </div>
