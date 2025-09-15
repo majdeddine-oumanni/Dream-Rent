@@ -21,4 +21,7 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
 
     @Query(value = "SELECT COUNT(p) FROM Property p WHERE p.availability = true AND p.owner.id = :owner_id")
     Long availablePropertiesNumber(Long owner_id);
+
+    @Query(value = "SELECT p FROM Property p WHERE p.price BETWEEN :price1 AND :price2")
+    List<Property> getPropertiesByPrice(double price1, double price2);
 }

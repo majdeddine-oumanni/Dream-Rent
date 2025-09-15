@@ -130,4 +130,8 @@ public class PropertyService {
     public Long getAvailablePropertiesNumber(Long owner_id){
         return repository.availablePropertiesNumber(owner_id);
     }
+
+    public List<PropertyDTO> getPropertiesByPrice(double price1, double price2){
+        return mapper.toDTOs(repository.getPropertiesByPrice(price1, price2));
+    }
 }

@@ -68,6 +68,14 @@ public class PropertyController {
         return service.findPropertiesByPropertyType(type);
     }
 
+    @GetMapping("/search/price")
+    public List<PropertyDTO> searchPropertiesByPrice(@RequestParam double price1, @RequestParam double price2) {
+        return service.getPropertiesByPrice(price1, price2);
+    }
+
+
+
+
     @GetMapping("/ownerOfProperty/{property_id}")
     public UserDTO getOwnerByPropertyId(@PathVariable Long property_id){
         return service.getOwnerByPropertyId(property_id);
