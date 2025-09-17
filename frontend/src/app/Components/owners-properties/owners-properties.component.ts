@@ -80,7 +80,11 @@ export class OwnersPropertiesComponent implements OnInit{
   }
 
   deleteProperty(propertyId : number){
+    const data = localStorage.getItem("auth_user") || "";
+    const user = JSON.parse(data);
     this.service.deleteProperty(propertyId).subscribe(()=>{
+      this.getPropertiesNumber(user.id);
+      this.getAvailableProperties(user.id);
       this.propertiesList = this.propertiesList.filter(property => property.id != propertyId);
 
       delete this.propertyReservations[propertyId];
