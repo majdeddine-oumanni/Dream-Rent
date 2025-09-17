@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { PropertiesListService } from '../../Service/properties-list.service';
+import { RouterLink } from "@angular/router";
 
 interface Property{
   title: string,
@@ -21,7 +22,7 @@ interface Property{
 
 @Component({
   selector: 'app-property-form',
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, RouterLink],
   templateUrl: './property-form.component.html',
   styleUrl: './property-form.component.css'
 })
