@@ -101,15 +101,6 @@ public class PropertyService {
         return mapper.toDTOs(properties);
     }
 
-    public List<PropertyDTO> getPropertiesByCityName(String cityName){
-        List<Property> properties = repository.findAllByCity(cityName);
-        return mapper.toDTOs(properties);
-    }
-
-    public List<PropertyDTO> getPropertiesByCountryName(String country){
-        List<Property> properties = repository.findAllByCountry(country);
-        return mapper.toDTOs(properties);
-    }
 
     public List<PropertyDTO> findPropertiesByPropertyType(PropertyType propertyType){
         List<Property> properties = repository.findAllByPropertyType(propertyType);

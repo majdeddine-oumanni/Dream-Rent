@@ -53,27 +53,18 @@ public class PropertyController {
         return service.getPropertiesByOwnerId(ownerId);
     }
 
-    @GetMapping("/search/city")
-    public List<PropertyDTO> searchPropertiesByCity(@RequestParam String city) {
-        return service.getPropertiesByCityName(city);
-    }
 
-    @GetMapping("/search/country")
-    public List<PropertyDTO> searchPropertiesByCountry(@RequestParam String country) {
-        return service.getPropertiesByCountryName(country);
-    }
-
-    @GetMapping("/search/type")
+    @GetMapping("/search")
     public List<PropertyDTO> searchPropertiesByType(@RequestParam PropertyType type) {
         return service.findPropertiesByPropertyType(type);
     }
 
-    @GetMapping("/search/price")
+    @GetMapping("/search")
     public List<PropertyDTO> searchPropertiesByPrice(@RequestParam double price1, @RequestParam double price2) {
         return service.getPropertiesByPrice(price1, price2);
     }
 
-    @GetMapping("/search/place")
+    @GetMapping("/search")
     public List<PropertyDTO> findByPlace(@RequestParam String place){
         return service.findByPlace(place);
     }
