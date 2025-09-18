@@ -56,6 +56,7 @@ export class PropertyFormComponent {
           this.submitted = true;
         }
       })
+      window.scrollTo({top: 0, behavior: 'smooth'});
     }else{
       alert("the form is not valid");
     }

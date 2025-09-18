@@ -47,6 +47,10 @@ export class UserListComponent implements OnInit{
     if (confirmed) {
       this.service.deleteUser(id).subscribe(() => {
         this.users = this.users.filter(user => user.id !== id);
+        this.getUsersNumber();
+        this.getUsersNumberByRole("ADMIN");
+        this.getUsersNumberByRole("TENANT");
+        this.getUsersNumberByRole("OWNER");
       });
     }
   }

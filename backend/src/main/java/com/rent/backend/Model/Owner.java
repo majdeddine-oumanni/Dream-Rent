@@ -1,5 +1,6 @@
 package com.rent.backend.Model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 @Entity
 public class Owner extends User{
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Property> properties;
 
     public List<Property> getProperties() {
