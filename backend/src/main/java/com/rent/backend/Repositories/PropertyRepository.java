@@ -24,4 +24,7 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
 
     @Query(value = "SELECT p FROM Property p WHERE p.price BETWEEN :price1 AND :price2")
     List<Property> getPropertiesByPrice(double price1, double price2);
+
+    @Query(value = "SELECT p FROM Property p WHERE p.city = :place OR p.country = :place")
+    List<Property> findByPlace(String place);
 }

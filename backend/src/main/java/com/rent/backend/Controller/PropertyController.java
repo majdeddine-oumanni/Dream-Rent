@@ -73,7 +73,10 @@ public class PropertyController {
         return service.getPropertiesByPrice(price1, price2);
     }
 
-
+    @GetMapping("/search/place")
+    public List<PropertyDTO> findByPlace(@RequestParam String place){
+        return service.findByPlace(place);
+    }
 
 
     @GetMapping("/ownerOfProperty/{property_id}")

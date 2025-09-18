@@ -134,4 +134,8 @@ public class PropertyService {
     public List<PropertyDTO> getPropertiesByPrice(double price1, double price2){
         return mapper.toDTOs(repository.getPropertiesByPrice(price1, price2));
     }
+
+    public List<PropertyDTO> findByPlace(String place){
+        return mapper.toDTOs(repository.findByPlace(place));
+    }
 }
