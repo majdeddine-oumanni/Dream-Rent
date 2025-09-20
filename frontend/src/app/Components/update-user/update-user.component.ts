@@ -47,6 +47,7 @@ export class UpdateUserComponent implements OnInit{
   onSubmit( id: number){
     const data = this.userData.value as User;
     if(this.userData.valid){
+      window.scrollTo({top: 0, behavior: "smooth"})
       this.service.updateUserByAdmin(id, data).subscribe((response)=>{
         this.user = response;
         console.log(response);

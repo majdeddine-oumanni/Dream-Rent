@@ -31,6 +31,10 @@ export class FilteringService {
     return this.http.get<Property[]>(`${this.url}/type?type=${type}`);
   }
   getPropertiesByPrice(price1: number, price2:number):Observable<Property[]>{
-    return this.http.get<Property[]>(`${this.url}/price?price1=${price1}&price2=${price2}`);
+    return this.http.get<Property[]>(`${this.url}?price1=${price1}&price2=${price2}`);
+  }
+
+  getPropertiesByPlace(place: string):Observable<Property[]>{
+    return this.http.get<Property[]>(`${this.url}?place=${place}`);
   }
 }
