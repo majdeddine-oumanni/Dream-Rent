@@ -59,12 +59,12 @@ public class PropertyController {
         return service.findPropertiesByPropertyType(type);
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search/price")
     public List<PropertyDTO> searchPropertiesByPrice(@RequestParam double price1, @RequestParam double price2) {
         return service.getPropertiesByPrice(price1, price2);
     }
 
-    @GetMapping("/search")
+    @GetMapping("/search/aria")
     public List<PropertyDTO> findByPlace(@RequestParam String place){
         return service.findByPlace(place);
     }
